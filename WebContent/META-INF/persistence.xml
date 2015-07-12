@@ -13,7 +13,7 @@
 	   
 			  <!-- dados da conexao -->
 			  <property name="javax.persistence.jdbc.driver" value="org.hsqldb.jdbc.JDBCDriver" />
-			  <property name="javax.persistence.jdbc.url" value="jdbc:hsqldb:file:C:\java\hsqldb\bd" />
+			  <property name="javax.persistence.jdbc.url" value="jdbc:hsqldb:hsql://localhost/concluintesweb" />
 			  <property name="javax.persistence.jdbc.user" value="SA" />
 			  <property name="javax.persistence.jdbc.password" value="" />
 			
