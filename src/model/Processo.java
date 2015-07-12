@@ -1,6 +1,5 @@
 package model;
 
-import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -34,11 +33,9 @@ public class Processo {
 	@OneToMany(mappedBy="processo", cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
 	private List<Professor> banca;
 	
-	
 	public Processo() {
 
 	}
-
 
 	public Long getId() {
 		return id;
