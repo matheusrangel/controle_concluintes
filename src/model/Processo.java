@@ -1,12 +1,15 @@
 package model;
 
-import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Processo {
@@ -19,11 +22,17 @@ public class Processo {
 	private Long numero;
 	
 	@Column
-	private Date dataAbertura;
+	private Double nota;
 	
 	@Column
-	private Date dataFechamento;
-
+	private Professor orientador;
+	
+	@OneToMany(mappedBy="processo", cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
+	private List<Evento> eventos;
+	
+	@OneToMany(mappedBy="processo", cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
+	private List<Professor> banca;
+	
 	public Processo() {
 
 	}
@@ -32,46 +41,76 @@ public class Processo {
 		return id;
 	}
 
+
 	public void setId(Long id) {
 		this.id = id;
 	}
+
 
 	public Long getNumero() {
 		return numero;
 	}
 
+
 	public void setNumero(Long numero) {
 		this.numero = numero;
 	}
 
-	public Date getDataAbertura() {
-		return dataAbertura;
+
+	public Double getNota() {
+		return nota;
 	}
 
-	public void setDataAbertura(Date dataAbertura) {
-		this.dataAbertura = dataAbertura;
+
+	public void setNota(Double nota) {
+		this.nota = nota;
 	}
 
-	public Date getDataFechamento() {
-		return dataFechamento;
+
+	public Professor getOrientador() {
+		return orientador;
 	}
 
-	public void setDataFechamento(Date dataFechamento) {
-		this.dataFechamento = dataFechamento;
+
+	public void setOrientador(Professor orientador) {
+		this.orientador = orientador;
 	}
+
+
+	public List<Evento> getEventos() {
+		return eventos;
+	}
+
+
+	public void setEventos(List<Evento> eventos) {
+		this.eventos = eventos;
+	}
+
+
+	public List<Professor> getBanca() {
+		return banca;
+	}
+
+
+	public void setBanca(List<Professor> banca) {
+		this.banca = banca;
+	}
+
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result
-				+ ((dataAbertura == null) ? 0 : dataAbertura.hashCode());
-		result = prime * result
-				+ ((dataFechamento == null) ? 0 : dataFechamento.hashCode());
+		result = prime * result + ((banca == null) ? 0 : banca.hashCode());
+		result = prime * result + ((eventos == null) ? 0 : eventos.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((nota == null) ? 0 : nota.hashCode());
 		result = prime * result + ((numero == null) ? 0 : numero.hashCode());
+		result = prime * result
+				+ ((orientador == null) ? 0 : orientador.hashCode());
 		return result;
 	}
+
 
 	@Override
 	public boolean equals(Object obj) {
@@ -82,29 +121,38 @@ public class Processo {
 		if (getClass() != obj.getClass())
 			return false;
 		Processo other = (Processo) obj;
-		if (dataAbertura == null) {
-			if (other.dataAbertura != null)
+		if (banca == null) {
+			if (other.banca != null)
 				return false;
-		} else if (!dataAbertura.equals(other.dataAbertura))
+		} else if (!banca.equals(other.banca))
 			return false;
-		if (dataFechamento == null) {
-			if (other.dataFechamento != null)
+		if (eventos == null) {
+			if (other.eventos != null)
 				return false;
-		} else if (!dataFechamento.equals(other.dataFechamento))
+		} else if (!eventos.equals(other.eventos))
 			return false;
 		if (id == null) {
 			if (other.id != null)
 				return false;
 		} else if (!id.equals(other.id))
 			return false;
+		if (nota == null) {
+			if (other.nota != null)
+				return false;
+		} else if (!nota.equals(other.nota))
+			return false;
 		if (numero == null) {
 			if (other.numero != null)
 				return false;
 		} else if (!numero.equals(other.numero))
 			return false;
+		if (orientador == null) {
+			if (other.orientador != null)
+				return false;
+		} else if (!orientador.equals(other.orientador))
+			return false;
 		return true;
 	}
 
-	
 	
 }

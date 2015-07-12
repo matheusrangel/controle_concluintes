@@ -9,10 +9,6 @@
 	   <!-- provedor/implementacao do JPA -->
 	   <provider>org.hibernate.ejb.HibernatePersistence</provider>
 	
-	   <!-- entidade mapeada -->
-	   <class>model.Concluinte</class>
-	   <class>model.Processo</class>
-	
 	   <properties>
 	   
 			  <!-- dados da conexao -->
