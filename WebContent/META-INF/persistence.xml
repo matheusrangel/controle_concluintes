@@ -8,12 +8,18 @@
 
 	   <!-- provedor/implementacao do JPA -->
 	   <provider>org.hibernate.ejb.HibernatePersistence</provider>
-	
+		
+		<!-- classes -->
+		<class>model.Usuario</class>
+		<class>model.Professor</class>
+		<class>model.TipoTCC</class>
+		<class>model.Evento</class>
+		
 	   <properties>
 	   
 			  <!-- dados da conexao -->
 			  <property name="javax.persistence.jdbc.driver" value="org.hsqldb.jdbc.JDBCDriver" />
-			  <property name="javax.persistence.jdbc.url" value="jdbc:hsqldb:hsql://localhost/concluintesweb" />
+			  <property name="javax.persistence.jdbc.url" value="jdbc:hsqldb:hsql://localhost/concluintes" />
 			  <property name="javax.persistence.jdbc.user" value="SA" />
 			  <property name="javax.persistence.jdbc.password" value="" />
 			
