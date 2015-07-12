@@ -1,5 +1,7 @@
 package model;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -24,7 +26,6 @@ public class Concluinte {
 	
 	@Column(length=15)
 	private String telefone;
-	
 
 	public Concluinte() {
 		
@@ -120,6 +121,6 @@ public class Concluinte {
 			return false;
 		return true;
 	}
-	
+
 	
 }
