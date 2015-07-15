@@ -10,25 +10,7 @@
 <ui:composition template="/template.xhtml">
 
 	<ui:define name="centro">
-		<h:form>
-			<p:dataTable value="#{concluinteBean.model}" var="concluinte" rendered="#{not empty concluinteBean.concluintes}"
-				paginator="true" rows="20">
-				<p:column headerText="Matricula">
-					<h:outputText value="#{concluinte.matricula}" />
-				</p:column>
-				
-				<p:column headerText="Nome">
-					<h:outputText value="#{concluinte.nome}" />
-				</p:column>
-				
-				<p:column headerText=" - ">
-					<p:splitButton value="Abrir Processo" icon="fa fa-external-link">
-						<p:menuitem value="Editar" icon="fa fa-edit"/>
-						<p:menuitem value="Excluir" icon="fa fa-remove"/>
-					</p:splitButton>
-				</p:column>
-			</p:dataTable>
-		</h:form>
+	
 	</ui:define>
 
 </ui:composition>

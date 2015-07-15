@@ -18,7 +18,9 @@
 				<p:menuitem value="Professor" action="cadastro_professor?faces-redirect=true" />
 				<p:menuitem value="Tipo de TCC" action="cadastro_tipotcc?faces-redirect=true" />
 			</p:submenu>
-			<p:menuitem value="Painel" action="painel?faces-redirect=true" />
+			<p:menuitem value="Painel" action="painel?faces-redirect=true" icon="fa fa-home" />
+			<p:menuitem value="Concluintes" action="concluintes?faces-redirect=true" icon="fa fa-user"/>
+			<p:menuitem value="Processos" icon="fa fa-file" />
 		</c:if>
 		<c:if test="#{sessao.usuarioLogado.tipo == 1}">
 			<p:submenu label="Cadastrar" icon="fa fa-plus">
