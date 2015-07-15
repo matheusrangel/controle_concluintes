@@ -17,7 +17,7 @@ import dao.UsuarioDAO;
 @SessionScoped
 public class Autenticar {
 	
-	private String login, senha;
+	private String nome, login, senha;
 	private UsuarioDAO usuarioDAO = new UsuarioDAO();
 	private Usuario usuarioLogado;
 	
@@ -38,8 +38,8 @@ public class Autenticar {
 		if (usuario != null && usuario.getSenha().equals(this.senha)) {
 			this.usuarioLogado = usuario;
 			if (usuario.getTipo().equals(TipoUsuario.CoordenacaoTSI.getValue())) {
-				return "painel";
-			} else if (usuario.getTipo().equals(TipoUsuario.CoordenacaoEstagio)) {
+				return "painel?faces-redirect=true";
+			} else if (usuario.getTipo().equals(TipoUsuario.ProfessorEstagio)) {
 				return null;
 			}
 		} else {
@@ -51,7 +51,7 @@ public class Autenticar {
 	public String logout() {
 		this.usuarioLogado = null;
 		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
-		return "index";
+		return "index?faces-redirect=true";
 	}
 	
 	public void verificaPermissao(Integer permissao) throws IOException {
@@ -64,6 +64,32 @@ public class Autenticar {
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro:","Efetue login!"));
 			FacesContext.getCurrentInstance().getExternalContext().redirect("index.jsf");
 		}
+	}
+	
+	public String efetuarCadastro() throws IOException{
+		Usuario usuario = this.usuarioDAO.findByLogin(this.login);
+		
+		if(usuario == null){
+			usuario = new Usuario();
+			usuario.setTipo(1);
+			usuario.setNome(nome);
+			usuario.setLogin(login);
+			usuario.setSenha(senha);
+			usuarioDAO.persist(usuario);
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso:","Professor de Estágio cadastrado!"));
+		}else{
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro:","Login existente!"));
+		}
+		
+		return "painel";
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
 	public String getLogin() {

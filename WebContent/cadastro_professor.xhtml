@@ -8,12 +8,11 @@
 	xmlns:p="http://primefaces.org/ui">
 
 <ui:composition template="/template.xhtml">
-
+	
 	<ui:define name="centro">
-		<h1 style="text-align:center;">Cadastro TipoTCC</h1>
-	    <h:form style="text-align:center; margin-top: 5%;">
-	    	<p:inputText placeholder="Nome" value="#{tipoTccBean.nome}" required="true" requiredMessage="Digite um nome"/><br/>
-	    	<p:commandButton style="margin-top:20px;" value="Cadastrar" action="#{tipoTccBean.cadastrar}"/>
+	    <h:form>
+	    	<p:inputText placeholder="Nome" value="#{professorBean.nome}" required="true" requiredMessage="Digite um nome"/><br/>
+	    	<p:commandButton value="Cadastrar" action="#{professorBean.cadastrar}"/>
 	    </h:form>
 	</ui:define>
 	

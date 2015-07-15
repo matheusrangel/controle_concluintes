@@ -3,7 +3,7 @@ package auxiliar;
 public enum TipoUsuario {
 	
 	CoordenacaoTSI(0),
-	CoordenacaoEstagio(1);
+	ProfessorEstagio(1);
 	
 	private final int value;
 	

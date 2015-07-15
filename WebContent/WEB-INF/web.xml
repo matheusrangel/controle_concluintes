@@ -4,7 +4,9 @@
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
 	id="WebApp_ID" version="3.1">
 	<display-name>ControleConcluintes</display-name>
-
+	<welcome-file-list>
+		<welcome-file>index.jsf</welcome-file>
+	</welcome-file-list>
 	<context-param>
 		<param-name>primefaces.THEME</param-name>
 		<param-value>bootstrap</param-value>
@@ -13,8 +15,10 @@
 		<param-name>facelets.SKIP_COMMENTS</param-name>
 		<param-value>true</param-value>
 	</context-param>
+
 	<context-param>
 		<param-name>primefaces.FONT_AWESOME</param-name>
 		<param-value>true</param-value>
 	</context-param>
+
 </web-app>
