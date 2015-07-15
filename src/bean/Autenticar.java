@@ -1,5 +1,6 @@
 package bean;
 
+import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -15,8 +16,19 @@ import dao.UsuarioDAO;
 public class Autenticar {
 	
 	private String login, senha;
-	
 	private UsuarioDAO usuarioDAO = new UsuarioDAO();
+	
+	@PostConstruct
+	public void criarAdmin() {
+		if (usuarioDAO.findAll().size() == 0) {
+			Usuario admin = new Usuario();
+			admin.setLogin("admin");
+			admin.setNome("admin");
+			admin.setSenha("adminTSI");
+			admin.setTipo(TipoUsuario.CoordenacaoTSI.getValue());
+			usuarioDAO.persist(admin);
+		}
+	}
 	
 	public String efetuarLogin() {
 		Usuario usuario = this.usuarioDAO.findByLogin(this.login);
@@ -27,7 +39,7 @@ public class Autenticar {
 				return null;
 			}
 		} else {
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Login e/ou Senha incorretos!"));
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro:","Login e/ou Senha incorretos!"));
 		}
 		return null;
 	}
