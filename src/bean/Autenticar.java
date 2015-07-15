@@ -66,7 +66,7 @@ public class Autenticar {
 		}
 	}
 	
-	public String efetuarCadastro() {
+	public void efetuarCadastro() throws IOException{
 		Usuario usuario = this.usuarioDAO.findByLogin(this.login);
 		
 		if(usuario == null){
@@ -76,11 +76,11 @@ public class Autenticar {
 			usuario.setLogin(login);
 			usuario.setSenha(senha);
 			usuarioDAO.persist(usuario);
-			
-			return "painel?faces-redirect=true";
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso:","Professor de Estágio cadastrado!"));
+		}else{
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro:","Login existente!"));
 		}
 		
-		return null;
 	}
 
 	public String getNome() {

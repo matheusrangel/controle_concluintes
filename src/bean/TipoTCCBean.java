@@ -22,7 +22,7 @@ public class TipoTCCBean {
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso:","Tipo de TCC cadastrado!"));
 		}
 		
-		return "painel";
+		return "painel?faces-redirect=true";
 	}
 
 	public String getNome() {
