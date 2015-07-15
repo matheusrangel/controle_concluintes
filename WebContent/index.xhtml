@@ -13,10 +13,10 @@
 	</ui:define>
 
 	<ui:define name="centro">
-	    <h:form>
-			<p:inputText placeholder="Login" value="#{autenticar.login}" /><br/>
-			<p:password placeholder="Senha" value="#{autenticar.senha}"/><br/>
-			<p:commandButton value="Entrar" action="#{autenticar.efetuarLogin}"/>
+		<h:form>
+			<p:inputText placeholder="Login" id="login" required="true" requiredMessage="Preencha o login" value="#{autenticar.login}" /><br/>
+			<p:password placeholder="Senha"  required="true" requiredMessage="Digite a senha" value="#{autenticar.senha}"/><br/>
+			<p:commandButton value="Entrar" action="#{autenticar.efetuarLogin}" />
 		</h:form>
 	</ui:define>
 </ui:composition>
