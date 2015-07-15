@@ -11,8 +11,8 @@
 
 	<ui:define name="centro">
 		<h1 style="text-align:center;">Cadastro TipoTCC</h1>
-	    <h:form style="text-align:center; margin-top: 5%;">
-	    	<p:inputText placeholder="Nome" value="#{tipoTccBean.nome}" required="true" requiredMessage="Digite um nome"/><br/>
+	    <h:form style="text-align:center;">
+	    	<p:inputText placeholder="TCC" value="#{tipoTccBean.nome}" required="true" requiredMessage="Informe a descrição"/><br/>
 	    	<p:commandButton style="margin-top:20px;" value="Cadastrar" action="#{tipoTccBean.cadastrar}"/>
 	    </h:form>
 	</ui:define>
