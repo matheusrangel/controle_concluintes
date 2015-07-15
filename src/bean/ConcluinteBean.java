@@ -23,11 +23,7 @@ import dao.TipoTCCDAO;
 @ManagedBean(name="concluinteBean")
 public class ConcluinteBean {
 	private String matricula, nome, email, telefone;
-	private ConcluinteDAO concluinteDAO;
-	private TCCDAO tccDAO;
-	private TipoTCCDAO tipoTccDAO;
 	private TipoTCC tipo;
-	private ProfessorDAO professorDAO;
 	private List<TipoTCC> tipos;
 	private Professor orientador;
 	private List<Professor> professoresSource;
@@ -37,8 +33,8 @@ public class ConcluinteBean {
 	
 	@PostConstruct
 	public void carregarDados() {
-		tipoTccDAO = new TipoTCCDAO();
-		professorDAO = new ProfessorDAO();
+		TipoTCCDAO tipoTccDAO = new TipoTCCDAO();
+		ProfessorDAO professorDAO = new ProfessorDAO();
 		this.tipos = tipoTccDAO.findAll();
 		this.professoresSource = professorDAO.findAll();
 		
@@ -48,8 +44,8 @@ public class ConcluinteBean {
 	}
 	
 	public String cadastrar() {
-		concluinteDAO = new ConcluinteDAO();
-		tccDAO = new TCCDAO();
+		ConcluinteDAO concluinteDAO = new ConcluinteDAO();
+		TCCDAO tccDAO = new TCCDAO();
 		if (concluinteDAO.findByMatricula(this.matricula) == null) {
 			Concluinte concluinte = new Concluinte();
 			concluinte.setMatricula(this.matricula);
