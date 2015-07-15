@@ -23,6 +23,9 @@ public class Concluinte {
 	
 	@Column(length=20)
 	private String telefone;
+	
+	@Column
+	private Integer status;
 
 	public Long getId() {
 		return id;
@@ -64,6 +67,14 @@ public class Concluinte {
 		this.telefone = telefone;
 	}
 
+	public Integer getStatus() {
+		return status;
+	}
+
+	public void setStatus(Integer status) {
+		this.status = status;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -73,6 +84,7 @@ public class Concluinte {
 		result = prime * result
 				+ ((matricula == null) ? 0 : matricula.hashCode());
 		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
+		result = prime * result + ((status == null) ? 0 : status.hashCode());
 		result = prime * result
 				+ ((telefone == null) ? 0 : telefone.hashCode());
 		return result;
@@ -107,6 +119,11 @@ public class Concluinte {
 				return false;
 		} else if (!nome.equals(other.nome))
 			return false;
+		if (status == null) {
+			if (other.status != null)
+				return false;
+		} else if (!status.equals(other.status))
+			return false;
 		if (telefone == null) {
 			if (other.telefone != null)
 				return false;
@@ -114,6 +131,7 @@ public class Concluinte {
 			return false;
 		return true;
 	}
+
 	
 	
 }

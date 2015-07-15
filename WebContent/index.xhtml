@@ -7,14 +7,18 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
 
-<h:head></h:head>
+<ui:composition template="template.xhtml">
+	<ui:define name="menu">
+		
+	</ui:define>
 
-<h:body>
-	<h:form>
-		<p:inputText placeholder="Login" value="#{autenticar.login}" /><br/>
-		<p:password id="nonFeedback" placeholder="Senha" value="#{autenticar.senha}"/><br/>
-		<p:commandButton value="Entrar" action="#{autenticar.efetuarLogin}"/>
-	</h:form>
-</h:body>
+	<ui:define name="centro">
+	    <h:form>
+			<p:inputText placeholder="Login" value="#{autenticar.login}" /><br/>
+			<p:password placeholder="Senha" value="#{autenticar.senha}"/><br/>
+			<p:commandButton value="Entrar" action="#{autenticar.efetuarLogin}"/>
+		</h:form>
+	</ui:define>
+</ui:composition>
 
 </html>
