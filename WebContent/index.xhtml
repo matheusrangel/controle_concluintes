@@ -11,12 +11,16 @@
 	<ui:define name="menu">
 		
 	</ui:define>
+	
+	<ui:define name="verificacaoLogin">
+		
+	</ui:define>
 
 	<ui:define name="centro">
 		<h:form>
-			<p:inputText placeholder="Login" id="login" required="true" requiredMessage="Preencha o login" value="#{autenticar.login}" /><br/>
-			<p:password placeholder="Senha"  required="true" requiredMessage="Digite a senha" value="#{autenticar.senha}"/><br/>
-			<p:commandButton value="Entrar" action="#{autenticar.efetuarLogin}" />
+			<p:inputText placeholder="Login" id="login" required="true" requiredMessage="Preencha o login" value="#{sessao.login}" /><br/>
+			<p:password placeholder="Senha"  required="true" requiredMessage="Digite a senha" value="#{sessao.senha}"/><br/>
+			<p:commandButton value="Entrar" action="#{sessao.efetuarLogin}" />
 		</h:form>
 	</ui:define>
 </ui:composition>

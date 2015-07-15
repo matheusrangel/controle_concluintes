@@ -11,6 +11,10 @@
 	<title>Controle de Concluintes</title>
 </h:head>
 
+<ui:insert name="verificacaoLogin">
+	<f:event listener="#{sessao.verificaPermissao(0)}" type="preRenderView"></f:event>
+</ui:insert>
+
 <h:body>
 	<p:layout fullPage="true" style="min-width:400px;min-height:300px;">
 

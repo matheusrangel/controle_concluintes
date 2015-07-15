@@ -1,5 +1,7 @@
 package bean;
 
+import java.io.IOException;
+
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -11,12 +13,13 @@ import model.Usuario;
 import auxiliar.TipoUsuario;
 import dao.UsuarioDAO;
 
-@ManagedBean(name="autenticar")
+@ManagedBean(name="sessao")
 @SessionScoped
 public class Autenticar {
 	
 	private String login, senha;
 	private UsuarioDAO usuarioDAO = new UsuarioDAO();
+	private Usuario usuarioLogado;
 	
 	@PostConstruct
 	public void criarAdmin() {
@@ -33,6 +36,7 @@ public class Autenticar {
 	public String efetuarLogin() {
 		Usuario usuario = this.usuarioDAO.findByLogin(this.login);
 		if (usuario != null && usuario.getSenha().equals(this.senha)) {
+			this.usuarioLogado = usuario;
 			if (usuario.getTipo().equals(TipoUsuario.CoordenacaoTSI.getValue())) {
 				return "painel";
 			} else if (usuario.getTipo().equals(TipoUsuario.CoordenacaoEstagio)) {
@@ -42,6 +46,24 @@ public class Autenticar {
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro:","Login e/ou Senha incorretos!"));
 		}
 		return null;
+	}
+	
+	public String logout() {
+		this.usuarioLogado = null;
+		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+		return "index";
+	}
+	
+	public void verificaPermissao(Integer permissao) throws IOException {
+		if (getUsuarioLogado() != null) {
+			if (!getUsuarioLogado().getTipo().equals(permissao)) {
+				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro:","Voce não tem permissao para acessar esta página!"));
+				FacesContext.getCurrentInstance().getExternalContext().redirect("index.jsf");
+			}
+		} else {
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro:","Efetue login!"));
+			FacesContext.getCurrentInstance().getExternalContext().redirect("index.jsf");
+		}
 	}
 
 	public String getLogin() {
@@ -59,5 +81,15 @@ public class Autenticar {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
+
+	public Usuario getUsuarioLogado() {
+		return usuarioLogado;
+	}
+
+	public void setUsuarioLogado(Usuario usuarioLogado) {
+		this.usuarioLogado = usuarioLogado;
+	}
+	
+	
 	
 }
