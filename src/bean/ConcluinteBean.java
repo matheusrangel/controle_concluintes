@@ -7,6 +7,8 @@ import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
+import javax.faces.model.DataModel;
+import javax.faces.model.ListDataModel;
 
 import org.primefaces.model.DualListModel;
 
@@ -22,6 +24,8 @@ import dao.TipoTCCDAO;
 
 @ManagedBean(name="concluinteBean")
 public class ConcluinteBean {
+	private DataModel<Concluinte> model;
+	private List<Concluinte> concluintes;
 	private String matricula, nome, email, telefone;
 	private TipoTCC tipo;
 	private List<TipoTCC> tipos;
@@ -35,6 +39,10 @@ public class ConcluinteBean {
 	public void carregarDados() {
 		TipoTCCDAO tipoTccDAO = new TipoTCCDAO();
 		ProfessorDAO professorDAO = new ProfessorDAO();
+		ConcluinteDAO concluinteDAO = new ConcluinteDAO();
+		this.concluintes = concluinteDAO.findAll();
+		this.model = new ListDataModel<Concluinte>(this.concluintes);
+		
 		this.tipos = tipoTccDAO.findAll();
 		this.professoresSource = professorDAO.findAll();
 		
@@ -157,8 +165,21 @@ public class ConcluinteBean {
 	public void setProfessoresTarget(List<Professor> professoresTarget) {
 		this.professoresTarget = professoresTarget;
 	}
-	
-	
-	
+
+	public DataModel<Concluinte> getModel() {
+		return model;
+	}
+
+	public void setModel(DataModel<Concluinte> model) {
+		this.model = model;
+	}
+
+	public List<Concluinte> getConcluintes() {
+		return concluintes;
+	}
+
+	public void setConcluintes(List<Concluinte> concluintes) {
+		this.concluintes = concluintes;
+	}
 	
 }
