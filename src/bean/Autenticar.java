@@ -33,8 +33,8 @@ public class Autenticar {
 	public String efetuarLogin() {
 		Usuario usuario = this.usuarioDAO.findByLogin(this.login);
 		if (usuario != null && usuario.getSenha().equals(this.senha)) {
-			if (usuario.getTipo().equals(TipoUsuario.CoordenacaoTSI)) {
-				return null;
+			if (usuario.getTipo().equals(TipoUsuario.CoordenacaoTSI.getValue())) {
+				return "painel";
 			} else if (usuario.getTipo().equals(TipoUsuario.CoordenacaoEstagio)) {
 				return null;
 			}
