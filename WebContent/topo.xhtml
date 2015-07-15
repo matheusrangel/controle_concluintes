@@ -13,8 +13,9 @@
         
 		<c:if test="#{sessao.usuarioLogado.tipo == 0}">
 			<p:submenu label="Cadastrar" icon="fa fa-plus">
-				<p:menuitem value="Concluinte" url="#" />
+				<p:menuitem value="Concluinte" action="cadastro_concluinte?faces-redirect=true" />
 				<p:menuitem value="Usuário" action="cadastro?faces-redirect=true" />
+				<p:menuitem value="Professor" action="cadastro_professor?faces-redirect=true" />
 				<p:menuitem value="Tipo de TCC" action="cadastro_tipotcc?faces-redirect=true" />
 			</p:submenu>
 		</c:if>
