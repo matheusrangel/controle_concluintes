@@ -10,9 +10,10 @@
 <ui:composition template="/template.xhtml">
 	
 	<ui:define name="centro">
-	    <h:form>
+		<h1 style="text-align:center;">Cadastro de Professor</h1>
+	    <h:form style="text-align:center;">
 	    	<p:inputText placeholder="Nome" value="#{professorBean.nome}" required="true" requiredMessage="Digite um nome"/><br/>
-	    	<p:commandButton value="Cadastrar" action="#{professorBean.cadastrar}"/>
+	    	<p:commandButton style="margin-top:20px;" value="Cadastrar" action="#{professorBean.cadastrar}"/>
 	    </h:form>
 	</ui:define>
 	
