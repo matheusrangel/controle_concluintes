@@ -37,14 +37,15 @@ public class Autenticar {
 		Usuario usuario = this.usuarioDAO.findByLogin(this.login);
 		if (usuario != null && usuario.getSenha().equals(this.senha)) {
 			this.usuarioLogado = usuario;
-			if (usuario.getTipo().equals(TipoUsuario.CoordenacaoTSI.getValue())) {
+			if (usuario.getTipo().equals(0) || usuario.getTipo().equals(1)) {
 				return "painel?faces-redirect=true";
-			} else if (usuario.getTipo().equals(TipoUsuario.ProfessorEstagio)) {
+			} else {
 				return null;
 			}
 		} else {
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro:","Login e/ou Senha incorretos!"));
 		}
+		
 		return null;
 	}
 	
@@ -53,19 +54,7 @@ public class Autenticar {
 		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
 		return "index?faces-redirect=true";
 	}
-	
-	public void verificaPermissao(Integer permissao) throws IOException {
-		if (getUsuarioLogado() != null) {
-			if (!getUsuarioLogado().getTipo().equals(permissao)) {
-				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro:","Voce não tem permissao para acessar esta página!"));
-				FacesContext.getCurrentInstance().getExternalContext().redirect("index.jsf");
-			}
-		} else {
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro:","Efetue login!"));
-			FacesContext.getCurrentInstance().getExternalContext().redirect("index.jsf");
-		}
-	}
-	
+		
 	public String efetuarCadastro() throws IOException{
 		Usuario usuario = this.usuarioDAO.findByLogin(this.login);
 		
