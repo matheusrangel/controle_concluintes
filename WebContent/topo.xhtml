@@ -1,0 +1,30 @@
+<h:form xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+	
+	<p:menubar>
+		<f:facet name="options">
+            <p:outputLabel value="Olá, #{sessao.usuarioLogado.nome}!" style="margin-right: 15px;"/> 
+            <p:commandButton value="Sair" action="#{sessao.logout}" style="margin-right:15px" icon="fa fa-times-circle" />   
+        </f:facet>
+      
+		<c:if test="#{sessao.usuarioLogado.tipo == 0}">
+			<p:submenu label="Cadastrar" icon="fa fa-plus">
+				<p:menuitem value="Concluinte" action="cadastro_concluinte?faces-redirect=true" />
+				<p:menuitem value="Usuário" action="cadastro?faces-redirect=true" />
+				<p:menuitem value="Professor" action="cadastro_professor?faces-redirect=true" />
+				<p:menuitem value="Tipo de TCC" action="cadastro_tipotcc?faces-redirect=true" />
+			</p:submenu>
+		</c:if>
+		<c:if test="#{sessao.usuarioLogado.tipo == 1}">
+			<p:submenu label="Cadastrar" icon="fa fa-plus">
+				<p:menuitem value="Concluinte" action="cadastro_concluinte?faces-redirect=true" />
+			</p:submenu>
+		</c:if>
+		        
+	</p:menubar>
+	
+</h:form>
