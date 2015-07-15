@@ -9,16 +9,17 @@
 
 <ui:composition template="template.xhtml">
 	<ui:define name="menu">
-		<h1 style="text-align:center;">Controle de Concluintes</h1>
+		<h1 style="text-align:center;">Cadastro de Usuário</h1>
 	</ui:define>
-
+	
 	<ui:define name="centro">
 		<h:form style="text-align:center; margin-top: 5%;">
-			<p:inputText placeholder="Login" id="login" requiredMessage="Preencha o login" value="#{autenticar.login}" /><br/>
-			<p:password placeholder="Senha" requiredMessage="Digite a senha" value="#{autenticar.senha}"/><br/>
-			<p:commandButton style="margin-top: 20px;" value="Entrar" action="#{autenticar.efetuarLogin}" />
+			<p:inputText placeholder="Nome" id="nome" required="true" requiredMessage="Preencha o nome" value="#{autenticar.nome}" /><br/>
+			<p:inputText placeholder="Login" id="login" required="true" requiredMessage="Preencha o login" value="#{autenticar.login}" /><br/>
+			<p:password placeholder="Senha"  required="true" requiredMessage="Digite a senha" value="#{autenticar.senha}"/><br/>
+			<p:commandButton style="margin-top: 20px;" value="Cadastrar" action="#{autenticar.efetuarCadastro}" />
 		</h:form>
 	</ui:define>
+	
 </ui:composition>
-
 </html>

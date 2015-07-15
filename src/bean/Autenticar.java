@@ -15,7 +15,7 @@ import dao.UsuarioDAO;
 @SessionScoped
 public class Autenticar {
 	
-	private String login, senha;
+	private String nome, login, senha;
 	private UsuarioDAO usuarioDAO = new UsuarioDAO();
 	
 	@PostConstruct
@@ -35,13 +35,42 @@ public class Autenticar {
 		if (usuario != null && usuario.getSenha().equals(this.senha)) {
 			if (usuario.getTipo().equals(TipoUsuario.CoordenacaoTSI.getValue())) {
 				return "painel";
-			} else if (usuario.getTipo().equals(TipoUsuario.CoordenacaoEstagio)) {
+			} else if (usuario.getTipo().equals(TipoUsuario.ProfessorEstagio)) {
 				return null;
 			}
 		} else {
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro:","Login e/ou Senha incorretos!"));
 		}
 		return null;
+	}
+	
+	public String cadastro() {
+		return "cadastro.xhtml";
+	}
+	
+	public String efetuarCadastro() {
+		Usuario usuario = this.usuarioDAO.findByLogin(this.login);
+		
+		if(usuario == null){
+			usuario = new Usuario();
+			usuario.setTipo(1);
+			usuario.setNome(nome);
+			usuario.setLogin(login);
+			usuario.setSenha(senha);
+			usuarioDAO.persist(usuario);
+			
+			return "painel";
+		}
+		
+		return null;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
 	public String getLogin() {
