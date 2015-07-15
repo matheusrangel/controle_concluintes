@@ -8,11 +8,9 @@
 	xmlns:p="http://primefaces.org/ui">
 
 <ui:composition template="template.xhtml">
-	<ui:define name="menu">
-		<h1 style="text-align:center;">Cadastro de Usuário</h1>
-	</ui:define>
 	
 	<ui:define name="centro">
+		<h1 style="text-align:center;">Cadastro Professor de Estágio</h1>
 		<h:form style="text-align:center; margin-top: 5%;">
 			<p:inputText placeholder="Nome" id="nome" required="true" requiredMessage="Preencha o nome" value="#{autenticar.nome}" /><br/>
 			<p:inputText placeholder="Login" id="login" required="true" requiredMessage="Preencha o login" value="#{autenticar.login}" /><br/>
