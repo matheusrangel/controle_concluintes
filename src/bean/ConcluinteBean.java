@@ -8,7 +8,6 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 
-import org.primefaces.event.TransferEvent;
 import org.primefaces.model.DualListModel;
 
 import model.Concluinte;

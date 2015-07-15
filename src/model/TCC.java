@@ -1,12 +1,18 @@
 package model;
 
+
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -27,7 +33,8 @@ public class TCC {
 	@ManyToOne
 	private Professor orientador;
 	
-	@OneToMany
+	@ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.DETACH})
+	@JoinTable(name="tcc_professor", joinColumns={@JoinColumn(name="tcc_id")}, inverseJoinColumns = {@JoinColumn(name="professor_id")})
 	private List<Professor> banca;
 	
 	@Column
@@ -85,62 +92,5 @@ public class TCC {
 		this.autor = autor;
 	}
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((autor == null) ? 0 : autor.hashCode());
-		result = prime * result + ((banca == null) ? 0 : banca.hashCode());
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((nota == null) ? 0 : nota.hashCode());
-		result = prime * result
-				+ ((orientador == null) ? 0 : orientador.hashCode());
-		result = prime * result + ((tipo == null) ? 0 : tipo.hashCode());
-		return result;
-	}
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		TCC other = (TCC) obj;
-		if (autor == null) {
-			if (other.autor != null)
-				return false;
-		} else if (!autor.equals(other.autor))
-			return false;
-		if (banca == null) {
-			if (other.banca != null)
-				return false;
-		} else if (!banca.equals(other.banca))
-			return false;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
-			return false;
-		if (nota == null) {
-			if (other.nota != null)
-				return false;
-		} else if (!nota.equals(other.nota))
-			return false;
-		if (orientador == null) {
-			if (other.orientador != null)
-				return false;
-		} else if (!orientador.equals(other.orientador))
-			return false;
-		if (tipo == null) {
-			if (other.tipo != null)
-				return false;
-		} else if (!tipo.equals(other.tipo))
-			return false;
-		return true;
-	}
-
-	
-	
 }
