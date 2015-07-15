@@ -20,9 +20,11 @@ public class TipoTCCBean {
 			tipoTCC.setTipo(this.nome);
 			tipoTccDAO.persist(tipoTCC);
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso:","Tipo de TCC cadastrado!"));
+		}else{
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro:","Professor existente!"));
 		}
 		
-		return "painel?faces-redirect=true";
+		return "painel";
 	}
 
 	public String getNome() {

@@ -66,7 +66,7 @@ public class Autenticar {
 		}
 	}
 	
-	public void efetuarCadastro() throws IOException{
+	public String efetuarCadastro() throws IOException{
 		Usuario usuario = this.usuarioDAO.findByLogin(this.login);
 		
 		if(usuario == null){
@@ -81,6 +81,7 @@ public class Autenticar {
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro:","Login existente!"));
 		}
 		
+		return "painel";
 	}
 
 	public String getNome() {
