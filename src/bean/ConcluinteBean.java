@@ -35,11 +35,14 @@ public class ConcluinteBean {
 	private DualListModel<Professor> professores;
 	private Double nota;
 	
+	private Long matriculaSelected;
+	
 	@PostConstruct
 	public void carregarDados() {
 		TipoTCCDAO tipoTccDAO = new TipoTCCDAO();
 		ProfessorDAO professorDAO = new ProfessorDAO();
 		ConcluinteDAO concluinteDAO = new ConcluinteDAO();
+
 		this.concluintes = concluinteDAO.findAll();
 		this.model = new ListDataModel<Concluinte>(this.concluintes);
 		
@@ -76,6 +79,14 @@ public class ConcluinteBean {
 		}
 		
 		return "painel";
+	}
+	
+	public String excluir(Concluinte c) {
+		ConcluinteDAO concluinteDAO = new ConcluinteDAO();
+		concluinteDAO.remove(c);
+		concluinteDAO.commit();
+		
+		return null;
 	}
 	
 	public String getMatricula() {

@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/template.xhtml">
+	<ui:define name="centro">
+		<br />
+		<h:form style="text-align: center;">
+			<h1>Cadastro de Concluinte</h1>
+			<p:fieldset legend="Dados do Concluinte" toggleable="true">
+				<p:inputText placeholder="#{concluinteBean.matricula}"
+					value="#{concluinteBean.matricula}" required="true"
+					requiredMessage="Insira a Matrícula" />
+				<br />
+				<p:inputText placeholder="#{concluinteBean.nome}" value="#{concluinteBean.nome}"
+					required="true" requiredMessage="Insira o Nome do Concluinte" />
+				<br />
+				<p:inputText placeholder="#{concluinteBean.email}" value="#{concluinteBean.email}"
+					required="true" requiredMessage="Insira o Email do Concluinte" />
+				<br />
+				<p:inputText placeholder="#{concluinteBean.telefone}"
+					value="#{concluinteBean.telefone}" required="true"
+					requiredMessage="Insira o Telefone do Concluinte" />
+				<br />
+			</p:fieldset>
+			
+			<p:fieldset style="margin-top:20px;" legend="Dados do TCC" toggleable="true">
+				<p:outputLabel for="tipoTCC" value="Tipo do TCC:" />
+				<br />
+				<p:selectOneMenu required="true"
+					requiredMessage="Selecione um tipo de TCC" id="tipoTCC"
+					value="#{concluinteBean.tipo}" converter="generic">
+					
+					<f:selectItem itemLabel="Selecione Tipo de TCC" itemValue=""
+						noSelectionOption="true" />
+						
+					<f:selectItems value="#{concluinteBean.tipos}" var="tipoTCC"
+						itemValue="#{tipoTCC}" itemLabel="#{tipoTCC.tipo}" />
+						
+				</p:selectOneMenu>
+				<br />
+				<br />
+				<p:outputLabel for="orientadores" value="Orientador:" />
+				<br />
+				<p:selectOneMenu required="true"
+					requiredMessage="Selecione um Orientador" id="orientadores"
+					value="#{concluinteBean.orientador}" converter="generic">
+					<f:selectItem itemLabel="Selecione Orientador" itemValue=""
+						noSelectionOption="true" />
+					<f:selectItems value="#{concluinteBean.professoresSource}"
+						var="orientador" itemValue="#{orientador}"
+						itemLabel="#{orientador.nome}" />
+				</p:selectOneMenu>
+				<br />
+				<br />
+
+				<p:outputLabel for="nota" value="Nota:" />
+				<br />
+				<p:inputText id="nota" required="true"
+					requiredMessage="Insira a nota do TCC" placeholder="Nota"
+					value="#{concluinteBean.nota}" />
+				<br />
+				<br />
+
+				<p:outputLabel for="banca" value="Banca:" />
+				<p:pickList style="margin: auto;" required="true" requiredMessage="Preencha a banca"
+					id="banca" value="#{concluinteBean.professores}" var="professores"
+					itemLabel="#{professores.nome}" itemValue="#{professores}"
+					converter="generic">
+					<f:facet name="sourceCaption">Professores</f:facet>
+					<f:facet name="targetCaption">Banca</f:facet>
+				</p:pickList>
+			</p:fieldset>
+			<p:commandButton style="margin-top:20px;" value="Cadastrar"
+				action="#{concluinteBean.cadastrar}" />
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>
