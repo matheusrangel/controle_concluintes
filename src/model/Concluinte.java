@@ -2,9 +2,11 @@ package model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 import auxiliar.SituacaoConcluinte;
 
@@ -28,6 +30,9 @@ public class Concluinte {
 	
 	@Column
 	private Integer status;
+	
+	@OneToOne(mappedBy="concluinte", fetch = FetchType.EAGER)
+	private Processo processo;
 	
 	private SituacaoConcluinte situacao;
 
@@ -86,6 +91,14 @@ public class Concluinte {
 	public void setSituacao(SituacaoConcluinte situacao) {
 		this.situacao = situacao;
 		this.status = this.situacao.getValue();
+	}
+
+	public Processo getProcesso() {
+		return processo;
+	}
+
+	public void setProcesso(Processo processo) {
+		this.processo = processo;
 	}
 
 	
