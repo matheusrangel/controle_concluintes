@@ -25,8 +25,8 @@ public class Autenticar {
 		if (usuarioDAO.findAll().size() == 0) {
 			Usuario admin = new Usuario();
 			admin.setLogin("admin");
-			admin.setNome("admin");
-			admin.setSenha("adminTSI");
+			admin.setNome("Valéria");
+			admin.setSenha("admin");
 			admin.setTipo(TipoUsuario.CoordenacaoTSI.getValue());
 			usuarioDAO.persist(admin);
 		}
@@ -78,7 +78,7 @@ public class Autenticar {
 			usuarioDAO.update(usuarioLogado);
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso: Senha alterada!",""));
 		}else{
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Erro: Senha antiga não informada!",""));
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro: Senha antiga não informada!",""));
 		}
 		
 		return "painel";
