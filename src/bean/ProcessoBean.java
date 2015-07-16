@@ -114,7 +114,6 @@ public class ProcessoBean {
 		flash.put("concluinte", this.concluinte);
 	}
 	
-	
 	public String abrirProcesso(Long idConcluinte) {
 		ConcluinteDAO concluinteDAO = new ConcluinteDAO();
 		this.concluinte = concluinteDAO.findById(idConcluinte);
