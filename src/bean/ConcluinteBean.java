@@ -40,6 +40,16 @@ public class ConcluinteBean {
 	private DualListModel<Professor> professores;
 	private Double nota;
 	
+	private String situacao;
+	
+	public String getSituacao() {
+		return situacao;
+	}
+
+	public void setSituacao(String situacao) {
+		this.situacao = situacao;
+	}
+
 	private Concluinte concluinte;
 	
 	public Concluinte getConcluinte() {
@@ -105,6 +115,20 @@ public class ConcluinteBean {
 		
 		c.setEmail(this.concluinte.getEmail());
 		c.setTelefone(this.concluinte.getTelefone());
+		switch(this.situacao)
+		{
+		    case "Andamento":
+		    		c.setSituacao(SituacaoConcluinte.Aberto);
+		            break;
+		    
+		    case "Finalizado":
+		    		c.setSituacao(SituacaoConcluinte.Finalizado);
+		            break;
+		    
+		    case "Desistente":
+		    		c.setSituacao(SituacaoConcluinte.Desistente);
+		            break;  
+		};
 		
 		concluinteDAO.persist(c);
 		

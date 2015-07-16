@@ -13,20 +13,34 @@
 		<h:form style="text-align: center;">
 			#{concluinteBean.carregarFlash()}
 			<h1>Atualizar Informações de Concluinte</h1>
-			<p:fieldset legend="Dados do Concluinte" toggleable="true">
+			<p:fieldset legend="Dados do Concluinte" toggleable="true" style="margin: 0 auto; width: 700px;">
 				<p:panelGrid style="margin: 0 auto;" columns="2">
-					<p:outputLabel for="nome" value="Nome:"/>
-					<h:outputText id="nome" value="#{concluinteBean.concluinte.nome}"/>
-					
-					<p:outputLabel for="matricula" value="Matrícula:"/>
-					<h:outputText id="matricula" value="#{concluinteBean.concluinte.matricula}"/>
-					
-					<h:outputLabel for="email" value="Email: "/>
-					<p:inputText id="email" placeholder="#{concluinteBean.concluinte.email}" value="#{concluinteBean.concluinte.email}"/>
-				
-					<h:outputLabel for="telefone" value="Telefone: "/>
-					<p:inputText id="telefone" placeholder="#{concluinteBean.concluinte.telefone}" value="#{concluinteBean.concluinte.telefone}"/>
+					<p:outputLabel for="nome" value="Nome:" />
+					<h:outputText id="nome" value="#{concluinteBean.concluinte.nome}" />
+
+					<p:outputLabel for="matricula" value="Matrícula:" />
+					<h:outputText id="matricula"
+						value="#{concluinteBean.concluinte.matricula}" />
+
+					<h:outputLabel for="email" value="Email: " />
+					<p:inputText id="email"
+						placeholder="#{concluinteBean.concluinte.email}"
+						value="#{concluinteBean.concluinte.email}" />
+
+					<h:outputLabel for="telefone" value="Telefone: " />
+					<p:inputText id="telefone"
+						placeholder="#{concluinteBean.concluinte.telefone}"
+						value="#{concluinteBean.concluinte.telefone}" />
 				</p:panelGrid>
+				
+				<h:panelGrid style="margin: 0 auto; margin-bottom:10px" columns="2" cellpadding="5">
+					<p:outputLabel for="situacao" value="Situação:" />
+					<p:selectOneRadio id="situacao" value="#{concluinteBean.situacao}">
+						<f:selectItem itemLabel="Andamento" itemValue="Andamento" />
+						<f:selectItem itemLabel="Finalizado" itemValue="Finalizado" />
+						<f:selectItem itemLabel="Desistente" itemValue="Desistente" />
+					</p:selectOneRadio>
+				</h:panelGrid>
 			</p:fieldset>
 
 			<p:commandButton style="margin-top:20px;" value="Atualizar"

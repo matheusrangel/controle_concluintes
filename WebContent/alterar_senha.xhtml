@@ -10,13 +10,19 @@
 <ui:composition template="/template.xhtml">
 	<ui:define name="centro">
 	   <h:form>
-	   		<p:panelGrid columns="2">
-	   			<p:outputLabel for="senhaAntiga" value="Digite a senha atual:"/>
-	   			<p:password id="senhaAntiga" value="#{sessao.senhaAntiga}" required="true" requiredMessage="Digite a senha antiga!"/>
-	   			
-	   			<p:outputLabel for="senhaNova" value="Digite a senha nova:"/>
-	   			<p:password id="senhaNova" value="#{sessao.senhaNova}" required="true" requiredMessage="Digite a senha nova!"/>
-	   		</p:panelGrid>
+	   		<p:panel style="margin-top:10%; margin-left:25%; width: 700px;" header="Alterar senha">
+		   		<p:panelGrid style="margin: 0 auto;" columns="2">
+		   			<p:outputLabel for="senhaAntiga" value="Digite a senha atual:"/>
+		   			<p:password id="senhaAntiga" value="#{sessao.senhaAntiga}" required="true" requiredMessage="Digite a senha antiga!"/>
+		   			
+		   			<p:outputLabel for="senhaNova" value="Digite a senha nova:"/>
+		   			<p:password id="senhaNova" value="#{sessao.senhaNova}" required="true" requiredMessage="Digite a senha nova!"/>
+		   			
+		   			<f:facet name="footer">
+		   				<p:commandButton style="margin-top: 20px;" value="Enviar" action="#{sessao.alterarSenha()}"  icon="fa fa-external-link" />
+		   			</f:facet>
+		   		</p:panelGrid>
+	   		</p:panel>
 	   </h:form>
 	</ui:define>
 	

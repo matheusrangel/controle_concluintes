@@ -77,6 +77,8 @@ public class Autenticar {
 			this.usuarioLogado.setSenha(this.senhaNova);
 			usuarioDAO.update(usuarioLogado);
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso: Senha alterada!",""));
+		}else{
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Erro: Senha antiga não informada!",""));
 		}
 		
 		return "painel";
