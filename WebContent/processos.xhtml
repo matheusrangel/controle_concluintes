@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/template.xhtml">
+
+	<ui:define name="centro">
+		<h:form>
+			<p:dataTable value="#{processoBean.model}" var="processo" rendered="#{not empty processoBean.processos}"
+				paginator="true" rows="20">
+				<p:column headerText="Número: ">
+					<h:outputText value="#{processo.numero}" />
+				</p:column>
+				
+				<p:column headerText="Concluinte">
+					<h:outputText value="#{processo.concluinte.nome}" />
+				</p:column>
+				
+				<p:column headerText="Matrícula">
+					<h:outputText value="#{processo.concluinte.matricula}" />
+				</p:column>
+				
+				<p:column headerText="Situação">
+					<h:outputText value="#{processo.status}" />
+				</p:column>
+				
+				<p:column headerText=" - ">
+					<p:splitButton value="Prosseguir"  icon="fa fa-external-link">
+						<p:menuitem value="Editar" icon="fa fa-edit"/>
+						<p:menuitem value="Excluir" icon="fa fa-remove"/>
+					</p:splitButton>
+				</p:column>
+			</p:dataTable>
+		</h:form>
+	</ui:define>
+
+</ui:composition>
+</html>

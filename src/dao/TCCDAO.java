@@ -19,4 +19,7 @@ public class TCCDAO extends GenericDAO<TCC> {
 		return super.findByField(TCC.class, "id", id);
 	}
 	
+	public TCC findByAutor(Long id) {
+		return super.findByField(TCC.class, "autor", id);
+	}
 }

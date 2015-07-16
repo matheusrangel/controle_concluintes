@@ -7,10 +7,6 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
 
-<f:metadata>
-	<f:viewParam name="matricula" value="#{concluinteBean.matriculaSelected}" />
-</f:metadata>
-
 <ui:composition template="/template.xhtml">
 
 	<ui:define name="centro">
@@ -24,17 +20,20 @@
 				<p:growl id="message" showDetail="true" />
 
 				<p:column headerText="Matricula">
-					<h:outputText value="#{concluinte.matricula}" id="matricula" />
+					<h:outputText value="#{concluinte.matricula}" />
 				</p:column>
 
 				<p:column headerText="Nome">
 					<h:outputText value="#{concluinte.nome}" />
 				</p:column>
-
+				
+				<p:column headerText="Situação">
+					<h:outputText value="#{concluinte.situacao}" />
+				</p:column>
+				
 				<p:column headerText=" - ">
-					<p:splitButton value="Abrir Processo" icon="fa fa-external-link">
-						<p:menuitem value="Editar"
-							action="editar_concluinte?faces-redirect=true" icon="fa fa-edit" />
+					<p:splitButton value="Abrir Processo" action="#{processoBean.abrirProcesso(concluinte.id)}" icon="fa fa-external-link">
+						<p:menuitem value="Editar" action="#{concluinteBean.editar(concluinte)}" icon="fa fa-edit" />
 						<p:menuitem>
 							<p:commandLink styleClass="ui-menuitem-link"
 								action="#{concluinteBean.excluir(concluinte)}" ajax="false">

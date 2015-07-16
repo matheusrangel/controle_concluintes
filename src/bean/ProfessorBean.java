@@ -18,7 +18,7 @@ public class ProfessorBean {
 			Professor professor = new Professor();
 			professor.setNome(this.nome);
 			professorDAO.persist(professor);
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso:","Professor cadastrado!"));
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso: Professor cadastrado!",""));
 		}
 		
 		return "painel";

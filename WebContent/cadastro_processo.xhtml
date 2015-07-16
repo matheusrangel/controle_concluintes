@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/template.xhtml">
+	<ui:define name="centro">
+		<h:form>
+			<br/>
+			#{processoBean.carregarFlash()}
+			<p:fieldset legend="Dados do Concluinte" toggleable="true" >
+				<p:panelGrid columns="2">
+					<p:outputLabel for="matricula" value="Matrícula:"/>
+					<h:outputText id="matricula" value="#{processoBean.concluinte.matricula}"/>
+					
+					<p:outputLabel for="nome" value="Nome:"/>
+					<h:outputText id="nome" value="#{processoBean.concluinte.nome}"/>
+					
+					<p:outputLabel for="status" value="Status:"/>
+					<h:outputText id="status" value="#{processoBean.concluinte.situacao}"/>
+				</p:panelGrid>
+			</p:fieldset>
+			<br/>
+			<p:fieldset legend="Processo de Estágio" toggleable="true">
+				<p:panelGrid columns="2">
+					<p:outputLabel for="numero" value="Número do Processo: "/>
+					<p:inputText id="numero" value="#{processoBean.numero}" required="true" requiredMessage="Digite o número do processo" >
+						<f:convertNumber type="number"/>
+					</p:inputText>
+					
+					<p:outputLabel for="dataAbertura" value="Data de Abertura: "/>
+					<p:calendar id="dataAbertura" value="#{processoBean.dataAbertura}" pattern="dd/MM/yyyy" locale="pt" required="true" requiredMessage="Digite a data de Abertura"/>
+					
+					<p:outputLabel for="dataChegada" value="Data de Chegada a Coordenação: " />
+					<p:calendar id="dataChegada" value="#{processoBean.dataChegadaCoord}" pattern="dd/MM/yyyy" locale="pt" required="true" requiredMessage="Digite a data de Chegada"/>
+				</p:panelGrid>
+			</p:fieldset>
+			<br/>
+			<p:commandButton value="Abrir Processo" action="#{processoBean.cadastrar()}" />
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

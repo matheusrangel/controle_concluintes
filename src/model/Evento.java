@@ -8,6 +8,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.Transient;
+
+import auxiliar.StatusProcesso;
 
 																																										
 @Entity
@@ -25,6 +28,19 @@ public class Evento {
 	
 	@ManyToOne
 	private Processo processo;
+	
+	@Transient
+	private StatusProcesso statusEnum;
+	
+	public Evento() {
+		
+	}
+	
+	public Evento(Processo processo, Integer status, Date data) {
+		this.processo = processo;
+		this.status = status;
+		this.data = data;
+	}
 
 	public Long getId() {
 		return id;
@@ -58,6 +74,15 @@ public class Evento {
 		this.processo = processo;
 	}
 
+	public StatusProcesso getStatusEnum() {
+		return StatusProcesso.values()[getStatus()];
+	}
+
+	public void setStatusEnum(StatusProcesso statusEnum) {
+		this.statusEnum = statusEnum;
+		this.status = this.statusEnum.getValue();
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -67,6 +92,8 @@ public class Evento {
 		result = prime * result
 				+ ((processo == null) ? 0 : processo.hashCode());
 		result = prime * result + ((status == null) ? 0 : status.hashCode());
+		result = prime * result
+				+ ((statusEnum == null) ? 0 : statusEnum.hashCode());
 		return result;
 	}
 
@@ -99,8 +126,11 @@ public class Evento {
 				return false;
 		} else if (!status.equals(other.status))
 			return false;
+		if (statusEnum != other.statusEnum)
+			return false;
 		return true;
 	}
+
 	
 	
 }

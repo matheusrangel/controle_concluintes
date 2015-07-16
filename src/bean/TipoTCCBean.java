@@ -19,9 +19,9 @@ public class TipoTCCBean {
 			TipoTCC tipoTCC = new TipoTCC();
 			tipoTCC.setTipo(this.nome);
 			tipoTccDAO.persist(tipoTCC);
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso:","Tipo de TCC cadastrado!"));
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso: Tipo de TCC cadastrado!",""));
 		}else{
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro:","Professor existente!"));
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro: Professor existente!",""));
 		}
 		
 		return "painel";

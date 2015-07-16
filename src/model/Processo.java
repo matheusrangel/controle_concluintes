@@ -2,6 +2,7 @@ package model;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,6 +10,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Transient;
+
+import auxiliar.StatusProcesso;
 
 @Entity
 public class Processo {
@@ -20,11 +24,14 @@ public class Processo {
 	@Column
 	private String numero;
 	
-	@OneToOne
+	@OneToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE})
 	private Concluinte concluinte;
 	
-	@OneToMany
+	@OneToMany(cascade = CascadeType.ALL)
 	private List<Evento> eventos;
+	
+	@Transient
+	private StatusProcesso status;
 
 	public Long getId() {
 		return id;
@@ -58,49 +65,16 @@ public class Processo {
 		this.eventos = eventos;
 	}
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result
-				+ ((concluinte == null) ? 0 : concluinte.hashCode());
-		result = prime * result + ((eventos == null) ? 0 : eventos.hashCode());
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((numero == null) ? 0 : numero.hashCode());
-		return result;
+	public StatusProcesso getStatus() {
+		if (this.eventos != null && !this.eventos.isEmpty()) {
+			return (this.eventos.get(this.eventos.size()-1)).getStatusEnum();
+		}
+		return null;
 	}
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Processo other = (Processo) obj;
-		if (concluinte == null) {
-			if (other.concluinte != null)
-				return false;
-		} else if (!concluinte.equals(other.concluinte))
-			return false;
-		if (eventos == null) {
-			if (other.eventos != null)
-				return false;
-		} else if (!eventos.equals(other.eventos))
-			return false;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
-			return false;
-		if (numero == null) {
-			if (other.numero != null)
-				return false;
-		} else if (!numero.equals(other.numero))
-			return false;
-		return true;
+	public void setStatus(StatusProcesso status) {
+		this.status = status;
 	}
-	
+
 	
 }

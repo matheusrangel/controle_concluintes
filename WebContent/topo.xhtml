@@ -20,7 +20,7 @@
 				<p:menuitem value="Tipo de TCC" action="cadastro_tipotcc?faces-redirect=true" />
 			</p:submenu>
 			<p:menuitem value="Concluintes" action="concluintes?faces-redirect=true" style="margin-right: 15px;" icon="fa fa-user"/>
-			<p:menuitem value="Processos" icon="fa fa-file" style="margin-right: 15px;"/>
+			<p:menuitem value="Processos" action="processos?faces-redirect=true" icon="fa fa-file" style="margin-right: 15px;"/>
 		</c:if>
 		<c:if test="#{sessao.usuarioLogado.tipo == 1}">
 			<p:submenu label="Cadastrar" icon="fa fa-plus">
