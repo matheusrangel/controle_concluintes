@@ -1,0 +1,24 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/template.xhtml">
+	<ui:define name="centro">
+	   <h:form>
+	   		<p:panelGrid columns="2">
+	   			<p:outputLabel for="senhaAntiga" value="Digite a senha atual:"/>
+	   			<p:password id="senhaAntiga" value="#{sessao.senhaAntiga}" required="true" requiredMessage="Digite a senha antiga!"/>
+	   			
+	   			<p:outputLabel for="senhaNova" value="Digite a senha nova:"/>
+	   			<p:password id="senhaNova" value="#{sessao.senhaNova}" required="true" requiredMessage="Digite a senha nova!"/>
+	   		</p:panelGrid>
+	   </h:form>
+	</ui:define>
+	
+</ui:composition>
+</html>
