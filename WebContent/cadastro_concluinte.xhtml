@@ -8,10 +8,10 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:c="http://java.sun.com/jsp/jstl/core">
 
-<ui:compositio template="/template.xhtml">
+<ui:composition template="/template.xhtml">
 	<ui:define name="centro">
 		<br />
-		<h:form style="text-align: center;">
+		<h:form>
 			<h1>Cadastro de Concluinte</h1>
 			<p:fieldset legend="Dados do Concluinte" toggleable="true">
 				<p:inputText placeholder="Matrícula"
@@ -70,7 +70,7 @@
 				<br />
 
 				<p:outputLabel for="banca" value="Banca:" />
-				<p:pickList style="margin:auto;" required="true"
+				<p:pickList  required="true"
 					requiredMessage="Preencha a banca" id="banca"
 					value="#{concluinteBean.professores}" var="professores"
 					itemLabel="#{professores.nome}" itemValue="#{professores}"

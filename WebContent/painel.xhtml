@@ -12,11 +12,11 @@
 	<ui:define name="centro">
 		<p:panel toggleable="true" header="Concluintes">
 			<p:panelGrid columns="2">
+				<p:outputLabel for="concluintesNovos" value="Concluintes Novos: "/>
+				<h:outputText id="concluintesNovos" value="#{painelBean.concluintesNovos.size()}"/>
+				
 				<p:outputLabel for="concluintesProcAbertos" value="Concluintes com Processos Abertos: "/>
 				<h:outputText id="concluintesProcAbertos" value="#{painelBean.concluintesAbertos.size()}"/>
-				
-				<p:outputLabel for="concluintesProcNovos" value="Concluintes com Processos Novos: "/>
-				<h:outputText id="concluintesProcNovos" value="#{painelBean.concluintesNovos.size()}"/>
 				
 				<p:outputLabel for="concluintesProcFinalizados" value="Concluintes com Processos Finalizados: "/>
 				<h:outputText id="concluintesProcFinalizados" value="#{painelBean.concluintesFinalizados.size()}"/>
