@@ -11,6 +11,7 @@
 
 	<ui:define name="centro">
 		<h:form>
+			<h1 style="text-align: center;">Processos</h1>
 			<p:dataTable value="#{processoBean.model}" var="processo" rendered="#{not empty processoBean.processos}"
 				paginator="true" rows="12">
 				<p:column headerText="Número: ">
@@ -30,10 +31,7 @@
 				</p:column>
 				
 				<p:column headerText=" - ">
-					<p:splitButton value="Prosseguir" action="#{processoBean.abrirProcesso(processo.concluinte.id)}"  icon="fa fa-external-link">
-						<p:menuitem value="Editar" icon="fa fa-edit"/>
-						<p:menuitem value="Excluir" icon="fa fa-remove"/>
-					</p:splitButton>
+					<p:commandButton value="Prosseguir" action="#{processoBean.abrirProcesso(processo.concluinte.id)}"  icon="fa fa-external-link" />
 				</p:column>
 			</p:dataTable>
 		</h:form>

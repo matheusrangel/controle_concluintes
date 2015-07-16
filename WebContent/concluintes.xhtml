@@ -11,8 +11,8 @@
 
 	<ui:define name="centro">
 		<h:form>
-			<p:growl id="message" showDetail="true" />
-
+	
+			<h1 style="text-align: center;">Concluintes</h1>
 			<p:dataTable value="#{concluinteBean.model}" var="concluinte"
 				rendered="#{not empty concluinteBean.concluintes}" paginator="true"
 				rows="12">
