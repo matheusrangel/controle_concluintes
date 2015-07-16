@@ -6,7 +6,9 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
+import javax.faces.context.Flash;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 
@@ -23,6 +25,7 @@ import dao.TCCDAO;
 import dao.TipoTCCDAO;
 
 @ManagedBean(name="concluinteBean")
+@ViewScoped
 public class ConcluinteBean {
 	private DataModel<Concluinte> model;
 	private List<Concluinte> concluintes;
@@ -35,11 +38,22 @@ public class ConcluinteBean {
 	private DualListModel<Professor> professores;
 	private Double nota;
 	
+	private Concluinte concluinte;
+	
+	public Concluinte getConcluinte() {
+		return concluinte;
+	}
+
+	public void setConcluinte(Concluinte concluinte) {
+		this.concluinte = concluinte;
+	}
+
 	@PostConstruct
 	public void carregarDados() {
 		TipoTCCDAO tipoTccDAO = new TipoTCCDAO();
 		ProfessorDAO professorDAO = new ProfessorDAO();
 		ConcluinteDAO concluinteDAO = new ConcluinteDAO();
+
 		this.concluintes = concluinteDAO.findAll();
 		this.model = new ListDataModel<Concluinte>(this.concluintes);
 		
@@ -49,6 +63,11 @@ public class ConcluinteBean {
 		this.professoresTarget = new ArrayList<Professor>();
 		this.professores = new DualListModel<Professor>(professoresSource, professoresTarget);
 		
+	}
+	
+	public void carregarFlash() {
+		Flash flash = FacesContext.getCurrentInstance().getExternalContext().getFlash();
+		this.setConcluinte((Concluinte) flash.get("concluinte"));
 	}
 	
 	public String cadastrar() {
@@ -78,6 +97,38 @@ public class ConcluinteBean {
 		return "concluintes";
 	}
 	
+	public String atualizar(){
+		ConcluinteDAO concluinteDAO = new ConcluinteDAO();
+		Concluinte c = concluinteDAO.findByMatricula(concluinte.getMatricula());
+		
+		c.setEmail(this.concluinte.getEmail());
+		c.setTelefone(this.concluinte.getTelefone());
+		
+		concluinteDAO.persist(c);
+		
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso: Concluinte atualizado!",""));
+		return "concluintes";
+	}
+	
+	public String editar(Concluinte c){
+		Flash flash = FacesContext.getCurrentInstance().getExternalContext().getFlash();
+		flash.put("concluinte", c);
+		
+		return "editar_concluinte?faces-redirect=true";
+	}
+	
+	public String excluir(Concluinte c) {
+		ConcluinteDAO concluinteDAO = new ConcluinteDAO();
+		TCCDAO tccDAO = new TCCDAO();
+		TCC tcc = tccDAO.findByAutor(c.getId());
+		
+		tccDAO.remove(tcc);
+		concluinteDAO.remove(c);
+		
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso: Concluinte removido!",""));
+		return "concluintes";
+	}
+
 	public String getMatricula() {
 		return matricula;
 	}

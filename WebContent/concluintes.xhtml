@@ -11,12 +11,18 @@
 
 	<ui:define name="centro">
 		<h:form>
-			<p:dataTable value="#{concluinteBean.model}" var="concluinte" rendered="#{not empty concluinteBean.concluintes}"
-				paginator="true" rows="20">
+			<p:growl id="message" showDetail="true" />
+
+			<p:dataTable value="#{concluinteBean.model}" var="concluinte"
+				rendered="#{not empty concluinteBean.concluintes}" paginator="true"
+				rows="20">
+
+				<p:growl id="message" showDetail="true" />
+
 				<p:column headerText="Matricula">
 					<h:outputText value="#{concluinte.matricula}" />
 				</p:column>
-				
+
 				<p:column headerText="Nome">
 					<h:outputText value="#{concluinte.nome}" />
 				</p:column>
@@ -27,12 +33,30 @@
 				
 				<p:column headerText=" - ">
 					<p:splitButton value="Abrir Processo" action="#{processoBean.abrirProcesso(concluinte.id)}" icon="fa fa-external-link">
-						<p:menuitem value="Editar" icon="fa fa-edit"/>
-						<p:menuitem value="Excluir" icon="fa fa-remove"/>
+						<p:menuitem value="Editar" action="#{concluinteBean.editar(concluinte)}" icon="fa fa-edit" />
+						<p:menuitem>
+							<p:commandLink styleClass="ui-menuitem-link"
+								action="#{concluinteBean.excluir(concluinte)}" ajax="false">
+								<h:outputText
+									styleClass="ui-menuitem-icon ui-icon ui-icon-close" />
+								<h:outputText styleClass="ui-menuitem-text" value="Excluir" />
+								<p:confirm header="Excluir Concluinte!"
+									message="Você tem certeza?" icon="ui-icon-alert" />
+							</p:commandLink>
+						</p:menuitem>
 					</p:splitButton>
 				</p:column>
 			</p:dataTable>
+
+			<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+				<p:commandButton value="Sim" type="button"
+					styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+				<p:commandButton value="Não" type="button"
+					styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+			</p:confirmDialog>
 		</h:form>
+
+
 	</ui:define>
 
 </ui:composition>
