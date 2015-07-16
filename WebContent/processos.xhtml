@@ -12,7 +12,7 @@
 	<ui:define name="centro">
 		<h:form>
 			<p:dataTable value="#{processoBean.model}" var="processo" rendered="#{not empty processoBean.processos}"
-				paginator="true" rows="20">
+				paginator="true" rows="12">
 				<p:column headerText="Número: ">
 					<h:outputText value="#{processo.numero}" />
 				</p:column>

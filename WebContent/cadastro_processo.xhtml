@@ -11,55 +11,138 @@
 <ui:composition template="/template.xhtml">
 	<ui:define name="centro">
 		<h:form>
-			<br/>
+			<br />
 			#{processoBean.carregarFlash()}
-			<p:fieldset legend="Dados do Concluinte" toggleable="true" >
+			<p:fieldset legend="Dados do Concluinte" toggleable="true">
 				<p:panelGrid columns="2">
-					<p:outputLabel for="matricula" value="Matrícula:"/>
-					<h:outputText id="matricula" value="#{processoBean.concluinte.matricula}"/>
-					
-					<p:outputLabel for="nome" value="Nome:"/>
-					<h:outputText id="nome" value="#{processoBean.concluinte.nome}"/>
-					
-					<p:outputLabel for="status" value="Status:"/>
-					<h:outputText id="status" value="#{processoBean.concluinte.situacao}"/>
+					<p:outputLabel for="matricula" value="Matrícula:" />
+					<h:outputText id="matricula"
+						value="#{processoBean.concluinte.matricula}" />
+
+					<p:outputLabel for="nome" value="Nome:" />
+					<h:outputText id="nome" value="#{processoBean.concluinte.nome}" />
+
+					<p:outputLabel for="status" value="Status:" />
+					<h:outputText id="status"
+						value="#{processoBean.concluinte.situacao}" />
 				</p:panelGrid>
 			</p:fieldset>
-			<br/>
+			<br />
+			<p:fieldset legend="Pendências" toggleable="true">
+				<p:panelGrid columns="2">
+					<p:outputLabel for="processoEstagio" value="Processo de Estágio: " />
+					<p:selectBooleanCheckbox id="processoEstagio" disabled="true"
+						value="#{processoBean.processo.status.getValue() >= 5? true:false}" />
+
+					<p:outputLabel for="enad" value="ENAD:" />
+					<p:selectBooleanCheckbox id="enad" disabled="false" />
+
+					<p:outputLabel for="semestres" value="Semestres Fechados: " />
+					<p:selectBooleanCheckbox id="semestres" disabled="false" />
+
+					<p:outputLabel for="cargahoraria" value="Carga Horária cumprida: " />
+					<p:selectBooleanCheckbox id="cargahoraria" disabled="false" />
+
+					<p:outputLabel for="complementar"
+						value="Atividades Complementares: " />
+					<p:selectBooleanCheckbox id="complementar" disabled="false" />
+				</p:panelGrid>
+			</p:fieldset>
+			<br />
 			<p:fieldset legend="Processo de Estágio" toggleable="true">
 				<p:panelGrid columns="2">
-					<p:outputLabel for="numero" value="Número do Processo: "/>
-					<p:inputText disabled="#{processoBean.processo.status.getValue() >= 1}" id="numero" value="#{processoBean.numero}" required="true" requiredMessage="Digite o número do processo" >
-						<f:convertNumber type="number"/>
+					<p:outputLabel for="numero" value="Número do Processo: " />
+					<p:inputText
+						disabled="#{processoBean.processo.status.getValue() >= 1}"
+						id="numero" value="#{processoBean.numero}" required="true"
+						requiredMessage="Digite o número do processo">
+						<f:convertNumber type="number" />
 					</p:inputText>
-					
-					<p:outputLabel for="dataAbertura" value="Data de Abertura: "/>
-					<p:calendar id="dataAbertura" disabled="#{processoBean.processo.status.getValue() >= 1}" value="#{processoBean.dataAbertura}" pattern="dd/MM/yyyy" locale="pt" required="true" requiredMessage="Digite a data de Abertura"/>
-					
-					<p:outputLabel for="dataChegada" value="Data de Chegada a Coordenação: " />
-					<p:calendar id="dataChegada" disabled="#{processoBean.processo.status.getValue() >= 1}" value="#{processoBean.dataChegadaCoord}" pattern="dd/MM/yyyy" locale="pt" required="true" requiredMessage="Digite a data de Chegada"/>
-					
-					<p:outputLabel rendered="#{processoBean.processo.status.getValue() >= 1}" for="dataEnvioOrientador" value="Data que foi enviado ao Orientador: " />
-					<p:calendar rendered="#{processoBean.processo.status.getValue() >= 1}" disabled="#{processoBean.processo.status.getValue() >= 2}"  id="dataEnvioOrientador" value="#{processoBean.dataEnvioOrientador}" pattern="dd/MM/yyyy" locale="pt" required="true" requiredMessage="Digite a data que foi enviado ao Orientador: "/>
-					
-					<p:outputLabel rendered="#{processoBean.processo.status.getValue() >= 2}" for="dataRecebidoOrientador" value="Data recebida do Orientador: " />
-					<p:calendar rendered="#{processoBean.processo.status.getValue() >= 2}" disabled="#{processoBean.processo.status.getValue() >= 3}"  id="dataRecebidoOrientador" value="#{processoBean.dataRecebidoOrientador}" pattern="dd/MM/yyyy" locale="pt" required="true" requiredMessage="Digite a data que foi recebido do Orientador: "/>
-					
-					<p:outputLabel rendered="#{processoBean.processo.status.getValue() >= 3}" for="dataEnviadoCEstagio" value="Data enviada para Coord. de Estágio: " />
-					<p:calendar rendered="#{processoBean.processo.status.getValue() >= 3}" disabled="#{processoBean.processo.status.getValue() >= 4}"  id="dataEnviadoCEstagio" value="#{processoBean.dataEnviadoCoordEst}" pattern="dd/MM/yyyy" locale="pt" required="true" requiredMessage="Digite a data que foi enviado para Coord. de Estágio: "/>
-					
-					<p:outputLabel rendered="#{processoBean.processo.status.getValue() >= 4}" for="dataRecebidoCoordEst" value="Data recebida da Coord. de Estágio: " />
-					<p:calendar rendered="#{processoBean.processo.status.getValue() >= 4}" disabled="#{processoBean.processo.status.getValue() >= 5}"  id="dataRecebidoCoordEst" value="#{processoBean.dataRecebidoCoordEstagio}" pattern="dd/MM/yyyy" locale="pt" required="true" requiredMessage="Digite a data que foi recebido da Coord. de Estágio: "/>
-					
-					<p:outputLabel rendered="#{processoBean.processo.status.getValue() >= 5}" for="dataEnviadoCCA" value="Data Enviada para CCA: " />
-					<p:calendar rendered="#{processoBean.processo.status.getValue() >= 5}" disabled="#{processoBean.processo.status.getValue() >= 6}"  id="dataEnviadoCCA" value="#{processoBean.dataEnviadoCCA}" pattern="dd/MM/yyyy" locale="pt" required="true" requiredMessage="Digite a data que foi enviado ao CCA: "/>
-					
+
+					<p:outputLabel for="dataAbertura" value="Data de Abertura: " />
+					<p:calendar id="dataAbertura"
+						disabled="#{processoBean.processo.status.getValue() >= 1}"
+						value="#{processoBean.dataAbertura}" pattern="dd/MM/yyyy"
+						locale="pt" required="true"
+						requiredMessage="Digite a data de Abertura" />
+
+					<p:outputLabel for="dataChegada"
+						value="Data de Chegada a Coordenação: " />
+					<p:calendar id="dataChegada"
+						disabled="#{processoBean.processo.status.getValue() >= 1}"
+						value="#{processoBean.dataChegadaCoord}" pattern="dd/MM/yyyy"
+						locale="pt" required="true"
+						requiredMessage="Digite a data de Chegada" />
+
+					<p:outputLabel
+						rendered="#{processoBean.processo.status.getValue() >= 1}"
+						for="dataEnvioOrientador"
+						value="Data que foi enviado ao Orientador: " />
+					<p:calendar
+						rendered="#{processoBean.processo.status.getValue() >= 1}"
+						disabled="#{processoBean.processo.status.getValue() >= 2}"
+						id="dataEnvioOrientador"
+						value="#{processoBean.dataEnvioOrientador}" pattern="dd/MM/yyyy"
+						locale="pt" required="true"
+						requiredMessage="Digite a data que foi enviado ao Orientador: " />
+
+					<p:outputLabel
+						rendered="#{processoBean.processo.status.getValue() >= 2}"
+						for="dataRecebidoOrientador" value="Data recebida do Orientador: " />
+					<p:calendar
+						rendered="#{processoBean.processo.status.getValue() >= 2}"
+						disabled="#{processoBean.processo.status.getValue() >= 3}"
+						id="dataRecebidoOrientador"
+						value="#{processoBean.dataRecebidoOrientador}"
+						pattern="dd/MM/yyyy" locale="pt" required="true"
+						requiredMessage="Digite a data que foi recebido do Orientador: " />
+
+					<p:outputLabel
+						rendered="#{processoBean.processo.status.getValue() >= 3}"
+						for="dataEnviadoCEstagio"
+						value="Data enviada para Coord. de Estágio: " />
+					<p:calendar
+						rendered="#{processoBean.processo.status.getValue() >= 3}"
+						disabled="#{processoBean.processo.status.getValue() >= 4}"
+						id="dataEnviadoCEstagio"
+						value="#{processoBean.dataEnviadoCoordEst}" pattern="dd/MM/yyyy"
+						locale="pt" required="true"
+						requiredMessage="Digite a data que foi enviado para Coord. de Estágio: " />
+
+					<p:outputLabel
+						rendered="#{processoBean.processo.status.getValue() >= 4}"
+						for="dataRecebidoCoordEst"
+						value="Data recebida da Coord. de Estágio: " />
+					<p:calendar
+						rendered="#{processoBean.processo.status.getValue() >= 4}"
+						disabled="#{processoBean.processo.status.getValue() >= 5}"
+						id="dataRecebidoCoordEst"
+						value="#{processoBean.dataRecebidoCoordEstagio}"
+						pattern="dd/MM/yyyy" locale="pt" required="true"
+						requiredMessage="Digite a data que foi recebido da Coord. de Estágio: " />
+
+					<p:outputLabel
+						rendered="#{processoBean.processo.status.getValue() >= 5}"
+						for="dataEnviadoCCA" value="Data Enviada para CCA: " />
+					<p:calendar
+						rendered="#{processoBean.processo.status.getValue() >= 5}"
+						disabled="#{processoBean.processo.status.getValue() >= 6}"
+						id="dataEnviadoCCA" value="#{processoBean.dataEnviadoCCA}"
+						pattern="dd/MM/yyyy" locale="pt" required="true"
+						requiredMessage="Digite a data que foi enviado ao CCA: " />
+
 				</p:panelGrid>
 			</p:fieldset>
-			<br/>
-			<p:commandButton rendered="#{!(processoBean.processo.status.getValue() >= 1)}" value="Abrir Processo" action="#{processoBean.cadastrar()}" />
-			<p:commandButton rendered="#{processoBean.processo.status.getValue() >= 1}" value="Salvar" action="#{processoBean.incrementar()}" />
+			<br />
+			<p:commandButton
+				rendered="#{!(processoBean.processo.status.getValue() >= 1)}"
+				value="Abrir Processo" action="#{processoBean.cadastrar()}" />
+			<p:commandButton
+				rendered="#{processoBean.processo.status.getValue() >= 1}"
+				value="Salvar" action="#{processoBean.incrementar()}" />
 		</h:form>
 	</ui:define>
 </ui:composition>
+
+
 </html>

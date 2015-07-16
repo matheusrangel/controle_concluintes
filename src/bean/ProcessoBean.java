@@ -152,15 +152,6 @@ public class ProcessoBean {
 		return "processos?faces-redirect=true";
 	}
 	
-//	public String prosseguir(Long idProcesso) {
-//		ProcessoDAO processoDAO = new ProcessoDAO();
-//		this.processo = processoDAO.findById(idProcesso);
-//		this.concluinte = this.processo.getConcluinte();
-//		criarFlash();
-//		
-//		return "cadastro_processo";
-//	}
-	
 	public String incrementar() {
 		ProcessoDAO processoDAO = new ProcessoDAO();
 		switch (getProcesso().getStatus()) {
@@ -183,6 +174,7 @@ public class ProcessoBean {
 		case RecebidoDaCoordEstagio:
 			Evento enviadoCCA = new Evento(this.processo, StatusProcesso.EnviadoParaCCA.getValue(), this.dataEnviadoCCA);
 			this.processo.getEventos().add(enviadoCCA);
+			this.processo.getConcluinte().setSituacao(SituacaoConcluinte.Finalizado);
 			break;
 		default:
 			break;
