@@ -30,7 +30,7 @@
 				</p:column>
 				
 				<p:column headerText=" - ">
-					<p:splitButton value="Prosseguir"  icon="fa fa-external-link">
+					<p:splitButton value="Prosseguir" action="#{processoBean.abrirProcesso(processo.concluinte.id)}"  icon="fa fa-external-link">
 						<p:menuitem value="Editar" icon="fa fa-edit"/>
 						<p:menuitem value="Excluir" icon="fa fa-remove"/>
 					</p:splitButton>
