@@ -10,10 +10,19 @@
 <ui:composition template="/template.xhtml">
 	
 	<ui:define name="centro">
-		<h1 style="text-align:center;">Cadastro de Professor</h1>
-	    <h:form style="text-align:center;">
-	    	<p:inputText placeholder="Nome" value="#{professorBean.nome}" required="true" requiredMessage="Digite um nome"/><br/>
-	    	<p:commandButton style="margin-top:20px;" value="Cadastrar" action="#{professorBean.cadastrar}"/>
+		 <h:form style="text-align:center;">
+			 <p:panel style="margin-top:10%; margin-left:38%; width: 360px;" header="Cadastro de Professor">
+				<h:panelGrid  id="loginPanel" columns="2" cellpadding="5">
+	
+					<h:outputLabel value="Nome: " />
+					<p:inputText placeholder="Nome" id="nome" value="#{professorBean.nome}" required="true" requiredMessage="Digite um nome"/><br/>
+	
+					<f:facet name="footer">
+						<p:commandButton style="margin-top:20px;" value="Cadastrar" action="#{professorBean.cadastrar}"/>
+					</f:facet>
+				</h:panelGrid>
+	
+			</p:panel>
 	    </h:form>
 	</ui:define>
 	

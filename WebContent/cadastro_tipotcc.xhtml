@@ -10,10 +10,19 @@
 <ui:composition template="/template.xhtml">
 
 	<ui:define name="centro">
-		<h1 style="text-align:center;">Cadastro TipoTCC</h1>
-	    <h:form style="text-align:center;">
-	    	<p:inputText placeholder="TCC" value="#{tipoTccBean.nome}" required="true" requiredMessage="Informe a descrição"/><br/>
-	    	<p:commandButton style="margin-top:20px;" value="Cadastrar" action="#{tipoTccBean.cadastrar}"/>
+		 <h:form style="text-align:center;">
+			 <p:panel style="margin-top:10%; margin-left:38%; width: 360px;" header="Cadastro Tipo de TCC">
+				<h:panelGrid  id="loginPanel" columns="2" cellpadding="5">
+	
+					<h:outputLabel value="Nome: " />
+					<p:inputText placeholder="TCC" id="nome" value="#{tipoTccBean.nome}" required="true" requiredMessage="Informe a descrição"/><br/>
+	
+					<f:facet name="footer">
+						<p:commandButton style="margin-top:20px;" value="Cadastrar" action="#{tipoTccBean.cadastrar}"/>
+					</f:facet>
+				</h:panelGrid>
+	
+			</p:panel>
 	    </h:form>
 	</ui:define>
 	

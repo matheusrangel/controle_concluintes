@@ -34,6 +34,7 @@
 				<p:column headerText=" - ">
 					<p:splitButton value="Abrir Processo" action="#{processoBean.abrirProcesso(concluinte.id)}" icon="fa fa-external-link">
 						<p:menuitem value="Editar" action="#{concluinteBean.editar(concluinte)}" icon="fa fa-edit" />
+						<!-- 
 						<p:menuitem>
 							<p:commandLink styleClass="ui-menuitem-link"
 								action="#{concluinteBean.excluir(concluinte)}" ajax="false">
@@ -44,6 +45,7 @@
 									message="Você tem certeza?" icon="ui-icon-alert" />
 							</p:commandLink>
 						</p:menuitem>
+						 -->
 					</p:splitButton>
 				</p:column>
 			</p:dataTable>

@@ -21,6 +21,10 @@ public class ProcessoDAO extends GenericDAO<Processo> {
 		return super.findByField(Processo.class, "id", id);
 	}
 	
+	public Processo findByAutor(Long id) {
+		return super.findByField(Processo.class, "concluinte", id);
+	}
+	
 	public Processo findByNome(String numero){
 		String classe = Processo.class.getName();
 		String campo = "numero";

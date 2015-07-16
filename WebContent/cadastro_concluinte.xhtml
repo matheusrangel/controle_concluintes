@@ -7,32 +7,32 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:c="http://java.sun.com/jsp/jstl/core">
-
+	
 	<ui:composition template="/template.xhtml">
 		<ui:define name="centro">
 			<br />
-			<h:form>
+			<h:form style="text-align:center;">
 				<h1>Cadastro de Concluinte</h1>
-				<p:fieldset legend="Dados do Concluinte" toggleable="true">
-					<p:inputText style="margin-top:20px;" placeholder="Matrícula"
+				<p:fieldset legend="Dados do Concluinte" toggleable="true" style="margin-left:23%; width:700px;">
+					<p:inputText style="margin-top:20px;" placeholder="Matrícula*"
 						value="#{concluinteBean.matricula}" required="true"
 						requiredMessage="Insira a Matrícula" />
 					<br />
-					<p:inputText style="margin-top:20px;" placeholder="Nome"
+					<p:inputText style="margin-top:20px;" placeholder="Nome*"
 						value="#{concluinteBean.nome}" required="true"
 						requiredMessage="Insira o Nome do Concluinte" />
 					<br />
-					<p:inputText style="margin-top:20px;" placeholder="Email"
+					<p:inputText style="margin-top:20px;" placeholder="Email*"
 						value="#{concluinteBean.email}" required="true"
 						requiredMessage="Insira o Email do Concluinte" />
 					<br />
-					<p:inputText style="margin-top:20px;" placeholder="Telefone"
+					<p:inputText style="margin-top:20px;" placeholder="Telefone*"
 						value="#{concluinteBean.telefone}" required="true"
 						requiredMessage="Insira o Telefone do Concluinte" />
 					<br />
 				</p:fieldset>
 
-				<p:fieldset style="margin-top:20px;" legend="Dados do TCC"
+				<p:fieldset style="margin-left:23%; width:700px; margin-top:50px;" legend="Dados do TCC"
 					toggleable="true">
 					<p:outputLabel for="tipoTCC" value="Tipo do TCC:" />
 					<br />
@@ -72,7 +72,7 @@
 					<br />
 
 					<p:outputLabel for="banca" value="Banca:" />
-					<p:pickList required="true" requiredMessage="Preencha a banca"
+					<p:pickList style="margin: 0 auto;" required="true" requiredMessage="Preencha a banca"
 						id="banca" value="#{concluinteBean.professores}" var="professores"
 						itemLabel="#{professores.nome}" itemValue="#{professores}"
 						converter="generic">
@@ -85,5 +85,4 @@
 			</h:form>
 		</ui:define>
 	</ui:composition>
-
 </html>

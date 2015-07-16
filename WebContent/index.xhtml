@@ -14,21 +14,30 @@
 
 	<ui:define name="centro">
 
-		<h:form style="text-align:center;">
-			<h:panelGrid style="margin: 0 auto;" columns="2" cellpadding="5">
-				<h:outputLabel for="login" value="Username:" />
-				<p:inputText placeholder="Login" id="login" required="true"
-				requiredMessage="Preencha o login" value="#{sessao.login}" />
 
-				<h:outputLabel for="password" value="Password:" />
-				<p:password id="password" required="true"
-				requiredMessage="Digite a senha" value="#{sessao.senha}" />
+		<h:form>
+			<p:panel style="margin-top:5%; margin-left:35%; width: 360px;" header="Login">
+				<h:panelGrid  id="loginPanel" columns="2" cellpadding="5">
 
-				<f:facet name="footer">
-					<p:commandButton style="margin-top:20px;" value="Entrar" action="#{sessao.efetuarLogin}" />
-				</f:facet>
-			</h:panelGrid>
+					<h:outputLabel for="login" value="Usuario: " />
+					<p:inputText placeholder="Login" id="login" required="true"
+						requiredMessage="Preencha o login" value="#{sessao.login}" />
+
+					<h:outputLabel for="password" value="Senha: " />
+					<p:password id="password" required="true"
+						requiredMessage="Digite a senha" value="#{sessao.senha}" />
+
+					<f:facet name="footer">
+						<p:commandButton style="margin-top:20px;" value="Entrar"
+							action="#{sessao.efetuarLogin}" />
+					</f:facet>
+				</h:panelGrid>
+
+			</p:panel>
+
 		</h:form>
+
+
 	</ui:define>
 </ui:composition>
 

@@ -10,13 +10,26 @@
 <ui:composition template="template.xhtml">
 	
 	<ui:define name="centro">
-		<h1 style="text-align:center;">Cadastro Professor de Estágio</h1>
-		<h:form style="text-align:center; margin-top: 5%;">
-			<p:inputText style="margin-bottom: 20px;" placeholder="Nome" id="nome" required="true" requiredMessage="Preencha o nome" value="#{sessao.nome}" /><br/>
-			<p:inputText style="margin-bottom: 20px;" placeholder="Login" id="login" required="true" requiredMessage="Preencha o login" value="#{sessao.login}" /><br/>
-			<p:password  style="margin-bottom: 20px;" placeholder="Senha"  required="true" requiredMessage="Digite a senha" value="#{sessao.senha}"/><br/>
-			<p:commandButton style="margin-top: 20px;" value="Cadastrar" action="#{sessao.efetuarCadastro}" />
-		</h:form>
+		 <h:form style="text-align:center;">
+			 <p:panel style="margin-top:10%; margin-left:38%; width: 360px;" header="Cadastro de Professor">
+				<h:panelGrid  id="loginPanel" columns="2" cellpadding="5">
+	
+					<h:outputLabel value="Nome: " />
+					<p:inputText style="margin-bottom: 20px;" placeholder="Nome" id="nome" required="true" requiredMessage="Preencha o nome" value="#{sessao.nome}" />
+	
+					<h:outputLabel value="Login: " />
+					<p:inputText style="margin-bottom: 20px;" placeholder="Login" id="login" required="true" requiredMessage="Preencha o login" value="#{sessao.login}" />
+					
+					<h:outputLabel value="Senha: " />
+					<p:password  style="margin-bottom: 20px;" placeholder="Senha"  required="true" requiredMessage="Digite a senha" value="#{sessao.senha}"/>
+					
+					<f:facet name="footer">
+						<p:commandButton style="margin-top: 20px;" value="Cadastrar" action="#{sessao.efetuarCadastro}" />
+					</f:facet>
+				</h:panelGrid>
+	
+			</p:panel>
+	    </h:form>
 	</ui:define>
 	
 </ui:composition>

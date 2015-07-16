@@ -15,11 +15,13 @@ import javax.faces.model.ListDataModel;
 import org.primefaces.model.DualListModel;
 
 import model.Concluinte;
+import model.Processo;
 import model.Professor;
 import model.TCC;
 import model.TipoTCC;
 import auxiliar.SituacaoConcluinte;
 import dao.ConcluinteDAO;
+import dao.ProcessoDAO;
 import dao.ProfessorDAO;
 import dao.TCCDAO;
 import dao.TipoTCCDAO;
@@ -120,8 +122,11 @@ public class ConcluinteBean {
 	public String excluir(Concluinte c) {
 		ConcluinteDAO concluinteDAO = new ConcluinteDAO();
 		TCCDAO tccDAO = new TCCDAO();
+		ProcessoDAO processoDAO = new ProcessoDAO();
 		TCC tcc = tccDAO.findByAutor(c.getId());
+		Processo processo = processoDAO.findByAutor(c.getId());
 		
+		processoDAO.remove(processo);
 		tccDAO.remove(tcc);
 		concluinteDAO.remove(c);
 		
