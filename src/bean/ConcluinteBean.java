@@ -60,7 +60,7 @@ public class ConcluinteBean {
 			concluinte.setNome(this.nome);
 			concluinte.setEmail(this.email);
 			concluinte.setTelefone(this.telefone);
-			concluinte.setStatus(SituacaoConcluinte.Aberto.getValue());
+			concluinte.setStatus(SituacaoConcluinte.Novo.getValue());
 			TCC tcc = new TCC();
 			tcc.setAutor(concluinte);
 			tcc.setOrientador(this.orientador);
@@ -69,13 +69,13 @@ public class ConcluinteBean {
 			tcc.setBanca(this.professores.getTarget());
 			concluinteDAO.persist(concluinte);
 			tccDAO.persist(tcc);
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso:","Concluinte cadastrado!"));
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso: Concluinte cadastrado!",""));
 		} else {
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro:","Matrícula já cadastrada!"));
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro: Matrícula já cadastrada!",""));
 			return "cadastro_concluinte";
 		}
 		
-		return "painel";
+		return "concluintes";
 	}
 	
 	public String getMatricula() {

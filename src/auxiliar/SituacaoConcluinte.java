@@ -1,9 +1,10 @@
 package auxiliar;
 
 public enum SituacaoConcluinte {
-	Aberto(0),
-	Finalizado(1),
-	Desistente(2);
+	Novo(0),
+	Aberto(1),
+	Finalizado(2),
+	Desistente(3);
 	
 	private final int value;
 	
@@ -14,4 +15,6 @@ public enum SituacaoConcluinte {
     public int getValue() {
         return value;
     }
+    
+    
 }

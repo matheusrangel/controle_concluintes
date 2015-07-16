@@ -20,7 +20,7 @@
 			</p:submenu>
 			<p:menuitem value="Painel" action="painel?faces-redirect=true" icon="fa fa-home" />
 			<p:menuitem value="Concluintes" action="concluintes?faces-redirect=true" icon="fa fa-user"/>
-			<p:menuitem value="Processos" icon="fa fa-file" />
+			<p:menuitem value="Processos" action="processos?faces-redirect=true" icon="fa fa-file" />
 		</c:if>
 		<c:if test="#{sessao.usuarioLogado.tipo == 1}">
 			<p:submenu label="Cadastrar" icon="fa fa-plus">

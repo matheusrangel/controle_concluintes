@@ -1,6 +1,6 @@
 package auxiliar;
 
-public enum Status {
+public enum StatusProcesso {
 	
 	Aberto(0),
 	ChegouNaCoordenacao(1),
@@ -12,7 +12,7 @@ public enum Status {
 	
 	private final int value;
 	
-    private Status(int value) {
+    private StatusProcesso(int value) {
         this.value = value;
     }
 
