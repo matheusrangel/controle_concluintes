@@ -12,9 +12,9 @@
 	<ui:define name="centro">
 		<h1 style="text-align:center;">Cadastro Professor de Estágio</h1>
 		<h:form style="text-align:center; margin-top: 5%;">
-			<p:inputText placeholder="Nome" id="nome" required="true" requiredMessage="Preencha o nome" value="#{sessao.nome}" /><br/>
-			<p:inputText placeholder="Login" id="login" required="true" requiredMessage="Preencha o login" value="#{sessao.login}" /><br/>
-			<p:password placeholder="Senha"  required="true" requiredMessage="Digite a senha" value="#{sessao.senha}"/><br/>
+			<p:inputText style="margin-bottom: 20px;" placeholder="Nome" id="nome" required="true" requiredMessage="Preencha o nome" value="#{sessao.nome}" /><br/>
+			<p:inputText style="margin-bottom: 20px;" placeholder="Login" id="login" required="true" requiredMessage="Preencha o login" value="#{sessao.login}" /><br/>
+			<p:password  style="margin-bottom: 20px;" placeholder="Senha"  required="true" requiredMessage="Digite a senha" value="#{sessao.senha}"/><br/>
 			<p:commandButton style="margin-top: 20px;" value="Cadastrar" action="#{sessao.efetuarCadastro}" />
 		</h:form>
 	</ui:define>

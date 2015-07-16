@@ -14,19 +14,19 @@
 			#{concluinteBean.carregarFlash()}
 			<h1>Atualizar Informações de Concluinte</h1>
 			<p:fieldset legend="Dados do Concluinte" toggleable="true">
-				#{concluinteBean.concluinte.nome}
-				<br />
-				#{concluinteBean.concluinte.matricula}
-				<br />
-				<br />
-				<h:outputLabel for="email" value="Email: "/>
-				<p:inputText id="email" placeholder="#{concluinteBean.concluinte.email}" value="#{concluinteBean.concluinte.email}"/>
-				<br />
-				<br />
-				<h:outputLabel for="telefone" value="Telefone: "/>
-				<p:inputText id="telefone" placeholder="#{concluinteBean.concluinte.telefone}" value="#{concluinteBean.concluinte.telefone}"/>
-				<br />
-				<br />
+				<p:panelGrid style="margin: 0 auto;" columns="2">
+					<p:outputLabel for="nome" value="Nome:"/>
+					<h:outputText id="nome" value="#{concluinteBean.concluinte.nome}"/>
+					
+					<p:outputLabel for="matricula" value="Matrícula:"/>
+					<h:outputText id="matricula" value="#{concluinteBean.concluinte.matricula}"/>
+					
+					<h:outputLabel for="email" value="Email: "/>
+					<p:inputText id="email" placeholder="#{concluinteBean.concluinte.email}" value="#{concluinteBean.concluinte.email}"/>
+				
+					<h:outputLabel for="telefone" value="Telefone: "/>
+					<p:inputText id="telefone" placeholder="#{concluinteBean.concluinte.telefone}" value="#{concluinteBean.concluinte.telefone}"/>
+				</p:panelGrid>
 			</p:fieldset>
 
 			<p:commandButton style="margin-top:20px;" value="Atualizar"

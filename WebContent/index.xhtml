@@ -15,14 +15,19 @@
 	<ui:define name="centro">
 
 		<h:form style="text-align:center;">
-			<p:inputText placeholder="Login" id="login" required="true"
+			<h:panelGrid style="margin: 0 auto;" columns="2" cellpadding="5">
+				<h:outputLabel for="login" value="Username:" />
+				<p:inputText placeholder="Login" id="login" required="true"
 				requiredMessage="Preencha o login" value="#{sessao.login}" />
-			<br />
-			<p:password placeholder="Senha" required="true"
+
+				<h:outputLabel for="password" value="Password:" />
+				<p:password id="password" required="true"
 				requiredMessage="Digite a senha" value="#{sessao.senha}" />
-			<br />
-			<p:commandButton style="margin-top:20px;" value="Entrar"
-				action="#{sessao.efetuarLogin}" />
+
+				<f:facet name="footer">
+					<p:commandButton style="margin-top:20px;" value="Entrar" action="#{sessao.efetuarLogin}" />
+				</f:facet>
+			</h:panelGrid>
 		</h:form>
 	</ui:define>
 </ui:composition>
