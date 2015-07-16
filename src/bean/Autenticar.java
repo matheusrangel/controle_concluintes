@@ -17,7 +17,7 @@ import dao.UsuarioDAO;
 @SessionScoped
 public class Autenticar {
 	
-	private String nome, login, senha;
+	private String nome, login, senha, senhaAntiga, senhaNova;
 	private UsuarioDAO usuarioDAO = new UsuarioDAO();
 	private Usuario usuarioLogado;
 	
@@ -72,6 +72,16 @@ public class Autenticar {
 		
 		return "painel";
 	}
+	
+	public String alterarSenha() {
+		if (this.senhaAntiga.equals(this.usuarioLogado.getSenha())) {
+			this.usuarioLogado.setSenha(this.senhaNova);
+			usuarioDAO.update(usuarioLogado);
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso: Senha alterada!",""));
+		}
+		
+		return "painel";
+	}
 
 	public String getNome() {
 		return nome;
@@ -103,6 +113,22 @@ public class Autenticar {
 
 	public void setUsuarioLogado(Usuario usuarioLogado) {
 		this.usuarioLogado = usuarioLogado;
+	}
+
+	public String getSenhaNova() {
+		return senhaNova;
+	}
+
+	public void setSenhaNova(String senhaNova) {
+		this.senhaNova = senhaNova;
+	}
+
+	public String getSenhaAntiga() {
+		return senhaAntiga;
+	}
+
+	public void setSenhaAntiga(String senhaAntiga) {
+		this.senhaAntiga = senhaAntiga;
 	}
 	
 	
