@@ -11,42 +11,62 @@
 
 	<ui:define name="centro">
 
-		<div align="center" style="margin-top: 50px;">
-			<img style="height: 400px; width: 600px;" align="center" src="img/ifpb-tsi.png"></img>
-		</div>
-
-		<p:panel toggleable="true" header="Concluintes">
+		<!-- 
+			<div align="center" style="margin-top: 50px;">
+				<img style="height: 400px; width: 600px;" align="center" src="img/ifpb-tsi.png"></img>
+			</div>
+			
+		 -->
+		 
+		<p:panel style="margin-top:20px;" toggleable="true" header="Concluintes">
 			<p:panelGrid columns="2">
-				<p:outputLabel for="concluintesProcAbertos" value="Concluintes com Processos Abertos: "/>
-				<h:outputText id="concluintesProcAbertos" value="#{painelBean.concluintesAbertos.size()}"/>
-				
-				<p:outputLabel for="concluintesProcNovos" value="Concluintes com Processos Novos: "/>
-				<h:outputText id="concluintesProcNovos" value="#{painelBean.concluintesNovos.size()}"/>
-				
-				<p:outputLabel for="concluintesProcFinalizados" value="Concluintes com Processos Finalizados: "/>
-				<h:outputText id="concluintesProcFinalizados" value="#{painelBean.concluintesFinalizados.size()}"/>
+				<p:outputLabel for="concluintesProcAbertos"
+					value="Concluintes com Processos Abertos: " />
+				<h:outputText id="concluintesProcAbertos"
+					value="#{painelBean.concluintesAbertos.size()}" />
+
+				<p:outputLabel for="concluintesProcNovos"
+					value="Concluintes com Processos Novos: " />
+				<h:outputText id="concluintesProcNovos"
+					value="#{painelBean.concluintesNovos.size()}" />
+
+				<p:outputLabel for="concluintesProcFinalizados"
+					value="Concluintes com Processos Finalizados: " />
+				<h:outputText id="concluintesProcFinalizados"
+					value="#{painelBean.concluintesFinalizados.size()}" />
 			</p:panelGrid>
 		</p:panel>
-		
-		<p:panel toggleable="true" header="Processos">
+
+		<p:panel style="margin-top:20px;" toggleable="true" header="Processos">
 			<p:panelGrid columns="2">
-				<p:outputLabel for="prcsNaCoord" value="Processos Na Coordenação: "/>
-				<h:outputText id="prcsNaCoord" value="#{painelBean.prcsNaCoord.size()}"/>
-				
-				<p:outputLabel for="procsEnviadosOrient" value="Processos enviados ao Orientador: "/>
-				<h:outputText id="procsEnviadosOrient" value="#{painelBean.procsEnviadosOrient.size()}"/>
-				
-				<p:outputLabel for="procsRecebidosOrient" value="Processos Recebidos do Orientador: "/>
-				<h:outputText id="procsRecebidosOrient" value="#{painelBean.procsRecebidosOrient.size()}"/>
-				
-				<p:outputLabel for="prcsEnviadosCoordEst" value="Processos enviados à Coordenação de Estágio: "/>
-				<h:outputText id="prcsEnviadosCoordEst" value="#{painelBean.prcsEnviadosCoordEst.size()}"/>
-				
-				<p:outputLabel for="prcsRecebidosCoordEst" value="Processos recebidos da Coordenação de Estágio: "/>
-				<h:outputText id="prcsRecebidosCoordEst" value="#{painelBean.prcsRecebidosCoordEst.size()}"/>
-				
-				<p:outputLabel for="prcsEnviadosCCA" value="Processos Finalizados(Enviados para CCA): "/>
-				<h:outputText id="prcsEnviadosCCA" value="#{painelBean.prcsEnviadosCCA.size()}"/>
+				<p:outputLabel for="prcsNaCoord" value="Processos Na Coordenação: " />
+				<h:outputText id="prcsNaCoord"
+					value="#{painelBean.prcsNaCoord.size()}" />
+
+				<p:outputLabel for="procsEnviadosOrient"
+					value="Processos enviados ao Orientador: " />
+				<h:outputText id="procsEnviadosOrient"
+					value="#{painelBean.procsEnviadosOrient.size()}" />
+
+				<p:outputLabel for="procsRecebidosOrient"
+					value="Processos Recebidos do Orientador: " />
+				<h:outputText id="procsRecebidosOrient"
+					value="#{painelBean.procsRecebidosOrient.size()}" />
+
+				<p:outputLabel for="prcsEnviadosCoordEst"
+					value="Processos enviados à Coordenação de Estágio: " />
+				<h:outputText id="prcsEnviadosCoordEst"
+					value="#{painelBean.prcsEnviadosCoordEst.size()}" />
+
+				<p:outputLabel for="prcsRecebidosCoordEst"
+					value="Processos recebidos da Coordenação de Estágio: " />
+				<h:outputText id="prcsRecebidosCoordEst"
+					value="#{painelBean.prcsRecebidosCoordEst.size()}" />
+
+				<p:outputLabel for="prcsEnviadosCCA"
+					value="Processos Finalizados(Enviados para CCA): " />
+				<h:outputText id="prcsEnviadosCCA"
+					value="#{painelBean.prcsEnviadosCCA.size()}" />
 			</p:panelGrid>
 		</p:panel>
 
